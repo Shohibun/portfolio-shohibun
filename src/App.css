@@ -1,28 +1,82 @@
+/* CSS TIMELINE */
+ul.timeline {
+    list-style-type: none;
+    position: relative;
+}
+ul.timeline:before {
+    content: ' ';
+    background: #d4d9df;
+    display: inline-block;
+    position: absolute;
+    left: 29px;
+    width: 2px;
+    height: 100%;
+    z-index: 400;
+}
+ul.timeline > li {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+ul.timeline > li:before {
+    content: ' ';
+    background: white;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid #22c0e8;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    z-index: 400;
+}
+/* ================================= */
+
+
 .custom-font-title {
-    color: #c44569;
+    font-size: 20px;
+    color: black !important;
 }
 
-.custom-cursor {
-    transition: .5s;
+.custom-font-title-u {
+    text-decoration: none !important;
+    cursor: default;
+}
+
+.custom-font {
+    font-size: 16px;
+    color: black !important;
+}
+
+.custom-font-icon {
+    font-size: 50px;
+}
+
+.custom-color-font {
+    color: #F9B530;
+}
+
+.custom-font-color-nav {
+    color: #F9B530 !important;
+}
+
+.custom-radius {
+    border-radius: 20px;
 }
 
 .custom-cursor:hover {
     cursor: pointer;
-    color: white;
-    background-color: #c44569;
-    font-weight: bold;
-    border-radius: 5px;
+    color: #F9B530 !important;
     transition: .5s;
 }
 
-.custom-bg-navbar {
-    background-color: #cf6a87;
+.custom-bg {
+    background-color: #F9B530 !important;
 }
 
-.customer-bg-footer {
-    background-color: #2d3436;
+.custom-bg-orange {
+    background-image: linear-gradient(to right, #F9B530 , #ffd98e);
 }
 
-.custom-bg-nav-item {
-    background-color: #c44569;
+.custom-card {
+    width: 18rem;
 }

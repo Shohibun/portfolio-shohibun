@@ -1,12 +1,14 @@
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from './components/Navbar';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './layouts/Portfolio';
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
+    <Routes>
+      <Route path={'/'} element={<Layout />} />
+    </Routes>
     </BrowserRouter>
   );
 }

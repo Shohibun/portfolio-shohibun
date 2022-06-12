@@ -2,11 +2,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 
-export default function NavbarUser() {
+export default function Navbar() {
   return (
-    <nav className="navbar navbar-expand-sm fixed-top custom-bg-navbar">
+    <nav className="navbar navbar-expand-sm fixed-top navbar-light bg-light">
       <div className="container">
-        <a href="#" className="font-weight-bold custom-font-title">Shohibun</a>
+        <a href="#" className="font-weight-bold custom-font-title custom-font-title-u">Shohibun Najam</a>
         <button
           className="navbar-toggler"
           type="button"
@@ -21,13 +21,13 @@ export default function NavbarUser() {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav ml-auto">
             <a
-              className="nav-item nav-link ml-2 pl-3 pr-3 text-white font-weight-bold rounded custom-bg-nav-item custom-cursor"
+              className="nav-item nav-link ml-2 pl-3 pr-3 font-weight-bold rounded custom-font-color-nav custom-cursor"
               id="home"
             >
               Home
             </a>
             <a
-              className="nav-item nav-link ml-2 pl-3 pr-3 custom-font-title custom-cursor"
+              className="nav-item nav-link ml-2 pl-3 pr-3 font-weight-bold custom-font custom-cursor"
               id="project"
             >
               Project
@@ -37,4 +37,4 @@ export default function NavbarUser() {
       </div>
     </nav>
   );
-}
+};
