@@ -5,7 +5,7 @@ export default function Skill() {
     <div className="container">
       <div className="w-75 mx-auto">
         <h2 className="text-dark font-weight-bold text-center mt-5 pt-5">
-          About My Skills
+          My Skills
         </h2>
 
         <p className="text-dark text-center">
@@ -19,9 +19,9 @@ export default function Skill() {
           <p className="text-dark">Python</p>
           <div className="progress">
             <div
-              className="progress-bar w-75"
+              className="progress-bar custom-bar-1 custom-color-bar"
               role="progressbar"
-              aria-valuenow="75"
+              aria-valuenow="45"
               aria-valuemin="0"
               aria-valuemax="100"
             >
@@ -34,9 +34,9 @@ export default function Skill() {
           <p className="text-dark">HTML</p>
           <div className="progress">
             <div
-              className="progress-bar w-75"
+              className="progress-bar custom-bar-2 custom-color-bar"
               role="progressbar"
-              aria-valuenow="75"
+              aria-valuenow="90"
               aria-valuemin="0"
               aria-valuemax="100"
             >
@@ -51,9 +51,9 @@ export default function Skill() {
           <p className="text-dark">CSS</p>
           <div className="progress">
             <div
-              className="progress-bar w-75"
+              className="progress-bar custom-bar-2 custom-color-bar"
               role="progressbar"
-              aria-valuenow="75"
+              aria-valuenow="90"
               aria-valuemin="0"
               aria-valuemax="100"
             >
@@ -66,9 +66,9 @@ export default function Skill() {
           <p className="text-dark">JavaScript</p>
           <div className="progress">
             <div
-              className="progress-bar w-75"
+              className="progress-bar custom-bar-3 custom-color-bar"
               role="progressbar"
-              aria-valuenow="75"
+              aria-valuenow="80"
               aria-valuemin="0"
               aria-valuemax="100"
             >
@@ -83,7 +83,7 @@ export default function Skill() {
           <p className="text-dark">ReactJS</p>
           <div className="progress">
             <div
-              className="progress-bar w-75"
+              className="progress-bar custom-bar-4 custom-color-bar"
               role="progressbar"
               aria-valuenow="75"
               aria-valuemin="0"
@@ -98,9 +98,9 @@ export default function Skill() {
           <p className="text-dark">Slicing Design</p>
           <div className="progress">
             <div
-              className="progress-bar w-75"
+              className="progress-bar custom-bar-2 custom-color-bar"
               role="progressbar"
-              aria-valuenow="75"
+              aria-valuenow="90"
               aria-valuemin="0"
               aria-valuemax="100"
             >

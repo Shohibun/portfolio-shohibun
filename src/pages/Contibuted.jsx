@@ -8,7 +8,7 @@ export default function Contibuted() {
           Have Contibuted On
         </h2>
         <p className="text-dark font-weight-bold text-center">
-          For about 2 years I have contributed in the IT world, I have worked in
+          For about 6 months I have contributed in the IT world, I have worked in
           various companies and organizations.
         </p>
       </div>

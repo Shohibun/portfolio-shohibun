@@ -21,7 +21,8 @@ export default function Jumbotron() {
           <p className="text-dark font-weight-bold">Front-End Web Developer</p>
 
           <p>
-            I am a frontend web developer with more than 2 years of experience.
+            I am a frontend web developer with more than 6 months of experience. 
+            <br/>
             I use Frontend libraries like ReactJS and NextJS.
           </p>
 

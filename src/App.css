@@ -5,7 +5,7 @@ ul.timeline {
 }
 ul.timeline:before {
     content: ' ';
-    background: #d4d9df;
+    background: #F9B530;
     display: inline-block;
     position: absolute;
     left: 29px;
@@ -23,7 +23,7 @@ ul.timeline > li:before {
     display: inline-block;
     position: absolute;
     border-radius: 50%;
-    border: 3px solid #22c0e8;
+    border: 3px solid #F9B530;
     left: 20px;
     width: 20px;
     height: 20px;
@@ -79,4 +79,24 @@ ul.timeline > li:before {
 
 .custom-card {
     width: 18rem;
+}
+
+.custom-bar-1 {
+    width: 45%;
+}
+
+.custom-bar-2 {
+    width: 90%;
+}
+
+.custom-bar-3 {
+    width: 80%;
+}
+
+.custom-bar-4 {
+    width: 75%;
+}
+
+.custom-color-bar {
+    background-color: #F9B530 !important;
 }
