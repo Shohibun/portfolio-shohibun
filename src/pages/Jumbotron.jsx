@@ -5,15 +5,16 @@ export default function Jumbotron() {
   return (
     <section className="py-5 overflow-hidden">
       <div className="row">
-        <div className="col-md-4 pt-4 text-center custom-bg-orange">
+        <div className="col-md-4 custom-padding-top text-right custom-bg-orange">
           <img
-            className="w-50"
+            className="w-50 custom-position-image"
             src={require("../images/user.png")}
             alt="User"
           />
         </div>
 
         <div className="col-md-8 pt-4 pl-5 my-5">
+          <div className="pl-5 ml-5 pt-4">
           <h3 className="custom-color-font">Hello I'm</h3>
 
           <h2 className="text-dark font-weight-bold">Shohibun Najam Ilma</h2>
@@ -29,6 +30,7 @@ export default function Jumbotron() {
           <Link className="btn text-white custom-bg" to={"#"}>
             Contact Me
           </Link>
+          </div>
         </div>
       </div>
     </section>

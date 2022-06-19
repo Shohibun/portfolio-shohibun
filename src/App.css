@@ -100,3 +100,14 @@ ul.timeline > li:before {
 .custom-color-bar {
     background-color: #F9B530 !important;
 }
+
+.custom-position-image {
+    position: absolute;
+    margin-left: -125px;
+    bottom: 0;
+}
+
+.custom-padding-top {
+    padding-top: 200px !important;
+    height: 450px;
+}
