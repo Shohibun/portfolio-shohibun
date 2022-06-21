@@ -7,7 +7,7 @@ export default function Jumbotron() {
       <div className="row">
         <div className="col-md-4 custom-padding-top text-right custom-bg-orange">
           <img
-            className="w-50 custom-position-image"
+            className="custom-image-width custom-position-image"
             src={require("../images/user.png")}
             alt="User"
           />

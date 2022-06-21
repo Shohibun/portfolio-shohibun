@@ -9,7 +9,7 @@ export default function Skill() {
         </h2>
 
         <p className="text-dark text-center">
-          I have more than 2 years of experience as a Frontend Web Developer. I
+          I have more than 6 months of experience as a Frontend Web Developer. I
           have also used various latest technologies such as ReactJS and NextJS.
         </p>
       </div>
