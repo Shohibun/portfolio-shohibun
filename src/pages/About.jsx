@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export default function About() {
   return (
@@ -15,9 +14,9 @@ export default function About() {
       </p>
 
       <div className="w-100 text-center">
-        <Link className="btn btn-light" to={"#"}>
+        <a className="btn btn-light" href={require("./CV_ShohibunNajamIlma_Fix.pdf")}>
           Download CV
-        </Link>
+        </a>
       </div>
     </div>
   );
