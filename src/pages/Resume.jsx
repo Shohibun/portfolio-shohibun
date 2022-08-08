@@ -39,6 +39,15 @@ export default function Resume() {
               </h6>
               <p className="text-muted">Head Departement Public Realtions</p>
             </li>
+            <li>
+              <h5 className="font-weight-bold text-dark">
+                FRONTEND JAVASCRIPT BINAR ACADEMY
+              </h5>
+              <h6 className="font-weight-bold text-muted">
+                February 2022 - August 2022
+              </h6>
+              <p className="text-muted">Participant MBKM Frontend JavaScript in Binar Academy</p>
+            </li>
           </ul>
         </div>
 
