@@ -8,19 +8,26 @@ export default function Contibuted() {
           Have Contibuted On
         </h2>
         <p className="text-dark font-weight-bold text-center">
-          For about 6 months I have contributed in the IT world, I have worked in
-          various companies and organizations.
+          For about 6 months I have contributed in the IT world, I have worked
+          in various companies and organizations.
         </p>
       </div>
 
       <div className="row">
-        <div className="col-md-12 text-center">
+        <div className="col-md-6 d-flex align-items-center justify-content-center">
           <img
-            className="w-25"
+            className="w-50"
             src={require("../images/HMIF.png")}
             alt="HMIF"
           />
-          <h5 className="text-dark font-weight-bold">HMIF</h5>
+        </div>
+
+        <div className="col-md-6 d-flex align-items-center justify-content-center">
+          <img
+            src={require("../images/central.png")}
+            alt="Central AI"
+            className="w-50"
+          />
         </div>
       </div>
     </div>

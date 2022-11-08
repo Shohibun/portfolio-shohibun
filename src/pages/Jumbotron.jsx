@@ -24,7 +24,7 @@ export default function Jumbotron() {
           <p>
             I am a frontend web developer with more than 6 months of experience. 
             <br/>
-            I use Frontend libraries like ReactJS and NextJS.
+            I use Frontend libraries like ReactJS, NextJS and Flask Python.
           </p>
 
           <Link className="btn text-white custom-bg" to={"#"}>

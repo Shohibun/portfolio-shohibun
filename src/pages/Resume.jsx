@@ -71,6 +71,15 @@ export default function Resume() {
               </h6>
               <p className="text-muted">Staff Devision Public Realtions</p>
             </li>
+            <li>
+              <h5 className="font-weight-bold text-dark">
+                FRONTEND WEB DEVELOPER CENTRAL AI
+              </h5>
+              <h6 className="font-weight-bold text-muted">
+                August 2022 - December 2022
+              </h6>
+              <p className="text-muted">Frontend Intern At Central AI</p>
+            </li>
           </ul>
         </div>
       </div>
