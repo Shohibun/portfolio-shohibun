@@ -32,21 +32,21 @@ export default function Resume() {
           <ul className="timeline">
             <li>
               <h5 className="font-weight-bold text-dark">
-                INFORMATICS STUDENT ASSOCIATION
-              </h5>
-              <h6 className="font-weight-bold text-muted">
-                December 2021 - December 2022
-              </h6>
-              <p className="text-muted">Head Departement Public Realtions</p>
-            </li>
-            <li>
-              <h5 className="font-weight-bold text-dark">
                 FRONTEND JAVASCRIPT BINAR ACADEMY
               </h5>
               <h6 className="font-weight-bold text-muted">
                 February 2022 - August 2022
               </h6>
               <p className="text-muted">Participant MBKM Frontend JavaScript in Binar Academy</p>
+            </li>
+            <li>
+              <h5 className="font-weight-bold text-dark">
+                FRONTEND WEB DEVELOPER CENTRAL AI
+              </h5>
+              <h6 className="font-weight-bold text-muted">
+                August 2022 - December 2022
+              </h6>
+              <p className="text-muted">Frontend Intern At Central AI</p>
             </li>
           </ul>
         </div>
@@ -58,7 +58,16 @@ export default function Resume() {
                 INFORMATICS STUDENT ASSOCIATION
               </h5>
               <h6 className="font-weight-bold text-muted">
-                December 2021 - December 2022
+                December 2019 - December 2020
+              </h6>
+              <p className="text-muted">Staff Devision Public Realtions</p>
+            </li>
+            <li>
+              <h5 className="font-weight-bold text-dark">
+                INFORMATICS STUDENT ASSOCIATION
+              </h5>
+              <h6 className="font-weight-bold text-muted">
+                December 2020 - December 2021
               </h6>
               <p className="text-muted">Staff Devision Public Realtions</p>
             </li>
@@ -69,16 +78,7 @@ export default function Resume() {
               <h6 className="font-weight-bold text-muted">
                 December 2021 - December 2022
               </h6>
-              <p className="text-muted">Staff Devision Public Realtions</p>
-            </li>
-            <li>
-              <h5 className="font-weight-bold text-dark">
-                FRONTEND WEB DEVELOPER CENTRAL AI
-              </h5>
-              <h6 className="font-weight-bold text-muted">
-                August 2022 - December 2022
-              </h6>
-              <p className="text-muted">Frontend Intern At Central AI</p>
+              <p className="text-muted">Head Departement Public Realtions</p>
             </li>
           </ul>
         </div>

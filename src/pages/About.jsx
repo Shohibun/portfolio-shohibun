@@ -3,9 +3,9 @@ import React from "react";
 export default function About() {
   return (
     <div className="w-75 mx-auto py-4 px-5 custom-bg custom-radius">
-      <h2 className="text-dark font-weight-bold text-center mt-4">About Me</h2>
+      <h2 className="text-white font-weight-bold text-center mt-4">About Me</h2>
 
-      <p className="text-dark text-center">
+      <p className="text-white text-center">
         I am currently a final year informatics student at University of Jember
         and now I am running an Independent Study program [Kampus Merdeka] at
         Binar Academy as Frontend JavaScript. I have an interest in Frontend Website, I 

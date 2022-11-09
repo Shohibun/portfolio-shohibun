@@ -115,3 +115,15 @@ ul.timeline > li:before {
     padding-top: 200px !important;
     height: 450px;
 }
+
+.custom-size-img {
+    width: 35%;
+}
+
+.custom-size-2-img {
+    width: 75%;
+}
+
+.custom-border {
+    border-right: #ffd98e 3px solid;
+}

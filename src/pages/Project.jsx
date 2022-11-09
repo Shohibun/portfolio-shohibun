@@ -1,75 +1,79 @@
 import React from "react";
+import Carousel from "react-bootstrap/Carousel";
+import Card from "react-bootstrap/Card";
 
 export default function Project() {
   return (
-    <div className="container mt-5">
+    <div className="w-75 mt-4 mx-auto">
       <h2 className="text-dark font-weight-bold text-center mb-4 mt-5" id="id-project">
-        Project
+         Project
       </h2>
-      <div className="row">
-        <div className="col-md-4">
-          <div className="card custom-card">
-            <div className="shadow-lg rounded">
-              <img
-                className="mt-2 mb-3 w-100"
-                src={require("../images/Project.png")}
-                alt="Binar Car Rental"
-              />
-              <div className="card-body">
-                <h5 className="card-title text-dark font-weight-bold text-center">
+
+      <Carousel indicators={false}>
+        <Carousel.Item>
+          <Card>
+            <Card.Img variant="top" src={require("../images/Project.png")} />
+            <Card.Body>
+              <Card.Text>
+                <h3 className="card-title text-dark font-weight-bold text-center">
                   Binar Car Rental
-                </h5>
+                </h3>
                 <p className="card-text text-dark text-center">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Commodi, cumque?.
+                  Laudantium eius vero sit quos assumenda harum illo ducimus
+                  laboriosam eum! Tempora voluptate asperiores vel temporibus
+                  beatae excepturi nihil iure aliquam aperiam mollitia
+                  laudantium error exercitationem nemo labore, quam iusto a
+                  illum, ab tenetur, ut totam quidem consectetur repellendus.
+                  Vero, sint ut.
                 </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-md-4">
-          <div className="card custom-card">
-            <div className="shadow-lg rounded">
-              <img
-                className="mt-2 mb-3 w-100"
-                src={require("../images/Project_2.png")}
-                alt="Binar Car Rental"
-              />
-              <div className="card-body">
-                <h5 className="card-title text-dark font-weight-bold text-center">
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Carousel.Item>
+        <Carousel.Item>
+          <Card>
+            <Card.Img variant="top" src={require("../images/Project_2.png")} />
+            <Card.Body>
+              <Card.Text>
+                <h3 className="card-title text-dark font-weight-bold text-center">
                   Second Hand
-                </h5>
+                </h3>
                 <p className="card-text text-dark text-center">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Commodi, cumque?.
+                  Laudantium eius vero sit quos assumenda harum illo ducimus
+                  laboriosam eum! Tempora voluptate asperiores vel temporibus
+                  beatae excepturi nihil iure aliquam aperiam mollitia
+                  laudantium error exercitationem nemo labore, quam iusto a
+                  illum, ab tenetur, ut totam quidem consectetur repellendus.
+                  Vero, sint ut.
                 </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-md-4">
-          <div className="card custom-card">
-            <div className="shadow-lg rounded">
-              <img
-                className="mt-2 mb-3 w-100"
-                src={require("../images/Project_3.png")}
-                alt="Binar Car Rental"
-              />
-              <div className="card-body">
-                <h5 className="card-title text-dark font-weight-bold text-center">
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Carousel.Item>
+        <Carousel.Item>
+          <Card>
+            <Card.Img variant="top" src={require("../images/Project_3.png")} />
+            <Card.Body>
+              <Card.Text>
+                <h3 className="card-title text-dark font-weight-bold text-center">
                   Central AI
-                </h5>
+                </h3>
                 <p className="card-text text-dark text-center">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Commodi, cumque?.
+                  Laudantium eius vero sit quos assumenda harum illo ducimus
+                  laboriosam eum! Tempora voluptate asperiores vel temporibus
+                  beatae excepturi nihil iure aliquam aperiam mollitia
+                  laudantium error exercitationem nemo labore, quam iusto a
+                  illum, ab tenetur, ut totam quidem consectetur repellendus.
+                  Vero, sint ut.
                 </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Carousel.Item>
+      </Carousel>
     </div>
   );
 }
