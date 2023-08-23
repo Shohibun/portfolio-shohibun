@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Jumbotron from "../pages/Jumbotron";
-import About from "../pages/About";
 import Skill from "../pages/Skill";
 import Resume from "../pages/Resume";
 import Contibuted from "../pages/Contibuted";
@@ -13,7 +12,6 @@ export default function Layout() {
     <>
       <Navbar />
       <Jumbotron />
-      <About />
       <Skill />
       <Resume />
       <Contibuted />

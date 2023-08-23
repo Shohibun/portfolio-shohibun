@@ -21,8 +21,8 @@ export default function Resume() {
                 FrontEnd Developer
               </h6>
               <p className="text-muted">
-                I am a FrontEnd Developer with more than 6 months of experience.
-                I use programming language like ReactJS and NextJS.
+                I am a FrontEnd Developer with more than one years of experience.
+                I use programming language like ReactJS and Flask Pyhton.
               </p>
             </li>
           </ul>
@@ -47,6 +47,15 @@ export default function Resume() {
                 August 2022 - December 2022
               </h6>
               <p className="text-muted">Frontend Intern At Central AI</p>
+            </li>
+            <li>
+              <h5 className="font-weight-bold text-dark">
+                ASSISTANT LECTURER OF GIS LABORATORY 
+              </h5>
+              <h6 className="font-weight-bold text-muted">
+                January 2021 - August 2021
+              </h6>
+              <p className="text-muted">Assistant Lecturer</p>
             </li>
           </ul>
         </div>
@@ -79,6 +88,15 @@ export default function Resume() {
                 December 2021 - December 2022
               </h6>
               <p className="text-muted">Head Departement Public Realtions</p>
+            </li>
+            <li>
+              <h5 className="font-weight-bold text-dark">
+                GIS LABORATORY ASISTANT
+              </h5>
+              <h6 className="font-weight-bold text-muted">
+                July 2020 - August 2021
+              </h6>
+              <p className="text-muted">Member</p>
             </li>
           </ul>
         </div>
