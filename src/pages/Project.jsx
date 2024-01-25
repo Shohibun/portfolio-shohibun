@@ -26,14 +26,14 @@ export default function Project() {
                     <h3 className="card-title text-dark font-weight-bold text-center">
                       Binar Car Rental
                     </h3>
-                    <p className="card-text text-dark text-center">
+                    <p className="card-text text-dark text-center custom-font-size">
                       Binar-Car is a website that aims to make car rental transactions.
                     </p>
                   </Card.Text>
                 </Card.Body>
               </Card>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4 custom-margin-top">
               <Card>
                 <Card.Img
                   variant="top"
@@ -44,14 +44,14 @@ export default function Project() {
                     <h3 className="card-title text-dark font-weight-bold text-center">
                       Second Hand
                     </h3>
-                    <p className="card-text text-dark text-center">
+                    <p className="card-text text-dark text-center custom-font-size">
                       Second Hand is a wesbite that aims to make goods purchase transactions.
                     </p>
                   </Card.Text>
                 </Card.Body>
               </Card>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4 custom-margin-top">
               <Card>
                 <Card.Img
                   variant="top"
@@ -62,7 +62,7 @@ export default function Project() {
                     <h3 className="card-title text-dark font-weight-bold text-center">
                       Central AI
                     </h3>
-                    <p className="card-text text-dark text-center">
+                    <p className="card-text text-dark text-center custom-font-size">
                       Central AI is a digital startup that focuses on helping services fast and effective for MSMEs.
                     </p>
                   </Card.Text>
@@ -84,14 +84,14 @@ export default function Project() {
                     <h3 className="card-title text-dark font-weight-bold text-center">
                       Green Care Blitz
                     </h3>
-                    <p className="card-text text-dark text-center">
+                    <p className="card-text text-dark text-center custom-font-size">
                       Green Care Blitz Template is a website that aims to be used as a template.
                     </p>
                   </Card.Text>
                 </Card.Body>
               </Card>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4 custom-margin-top">
               <Card>
                 <Card.Img
                   variant="top"
@@ -102,14 +102,14 @@ export default function Project() {
                     <h3 className="card-title text-dark font-weight-bold text-center">
                       POS Central AI
                     </h3>
-                    <p className="card-text text-dark text-center">
+                    <p className="card-text text-dark text-center custom-font-size">
                       POS is a website that aims to get the convenience of having a complete point of sale record that is free of charge without time limits for use.
                     </p>
                   </Card.Text>
                 </Card.Body>
               </Card>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4 custom-margin-top">
               <Card>
                 <Card.Img
                   variant="top"
@@ -120,7 +120,7 @@ export default function Project() {
                     <h3 className="card-title text-dark font-weight-bold text-center">
                       PWA | Central AI
                     </h3>
-                    <p className="card-text text-dark text-center">
+                    <p className="card-text text-dark text-center custom-font-size">
                       PWA | Central AI is a website that is almost the same as the main web only the size is different.
                     </p>
                   </Card.Text>

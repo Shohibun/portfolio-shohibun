@@ -8,7 +8,7 @@ export default function Skill() {
           My Skills
         </h2>
 
-        <p className="text-dark text-center">
+        <p className="text-dark text-center custom-font-size">
           I have more than one years of experience as a Front End Web Developer. I
           have also used various latest technologies such as ReactJS and Flask Python.
         </p>
@@ -16,7 +16,7 @@ export default function Skill() {
 
       <div className="row">
         <div className="col-md-6">
-          <p className="text-dark">Python</p>
+          <p className="text-dark custom-font-size">Python</p>
           <div className="progress">
             <div
               className="progress-bar custom-bar-1 custom-color-bar"
@@ -30,8 +30,8 @@ export default function Skill() {
           </div>
         </div>
 
-        <div className="col-md-6">
-          <p className="text-dark">HTML</p>
+        <div className="col-md-6 custom-margin-top">
+          <p className="text-dark custom-font-size">HTML</p>
           <div className="progress">
             <div
               className="progress-bar custom-bar-2 custom-color-bar"
@@ -46,9 +46,9 @@ export default function Skill() {
         </div>
       </div>
 
-      <div className="row">
-        <div className="col-md-6">
-          <p className="text-dark">CSS</p>
+      <div className="row mt-3">
+        <div className="col-md-6 custom-margin-top">
+          <p className="text-dark custom-font-size">CSS</p>
           <div className="progress">
             <div
               className="progress-bar custom-bar-2 custom-color-bar"
@@ -62,8 +62,8 @@ export default function Skill() {
           </div>
         </div>
 
-        <div className="col-md-6">
-          <p className="text-dark">JavaScript</p>
+        <div className="col-md-6 custom-margin-top">
+          <p className="text-dark custom-font-size">JavaScript</p>
           <div className="progress">
             <div
               className="progress-bar custom-bar-3 custom-color-bar"
@@ -78,9 +78,9 @@ export default function Skill() {
         </div>
       </div>
 
-      <div className="row">
-        <div className="col-md-6">
-          <p className="text-dark">ReactJS</p>
+      <div className="row mt-3">
+        <div className="col-md-6 custom-margin-top">
+          <p className="text-dark custom-font-size">ReactJS</p>
           <div className="progress">
             <div
               className="progress-bar custom-bar-4 custom-color-bar"
@@ -94,8 +94,8 @@ export default function Skill() {
           </div>
         </div>
 
-        <div className="col-md-6">
-          <p className="text-dark">Flask Pyhton</p>
+        <div className="col-md-6 custom-margin-top">
+          <p className="text-dark custom-font-size">Flask Pyhton</p>
           <div className="progress">
             <div
               className="progress-bar custom-bar-4 custom-color-bar"

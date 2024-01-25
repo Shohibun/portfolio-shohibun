@@ -53,7 +53,7 @@ export default function Footer() {
 
       <div className="row">
         <div className="col-md-12 text-center mt-2">
-          <p className="text-white font-weight-bold">
+          <p className="text-white font-weight-bold custom-font-size">
             &copy; Copyright 2022 | Made With Shohibun
           </p>
         </div>
