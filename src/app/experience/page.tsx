@@ -11,11 +11,15 @@ import {
 
 export default function Experience() {
   useEffect(() => {
-    AOS.init({ duration: 800, once: true });
+    AOS.init({ duration: 800, once: false });
+    AOS.refresh();
   }, []);
 
   return (
-    <div className="w-full flex justify-center items-center mt-25">
+    <div
+      id="experience"
+      className="w-full flex justify-center items-center mt-25"
+    >
       <div className="w-9/12">
         <h1 className="text-sky-400 text-4xl font-bold text-center">
           Experience

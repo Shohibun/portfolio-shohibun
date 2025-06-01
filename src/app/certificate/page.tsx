@@ -71,7 +71,10 @@ export default function Certificate() {
   }, []);
 
   return (
-    <div className="w-full flex justify-center items-center mt-25">
+    <div
+      id="certificate"
+      className="w-full flex justify-center items-center mt-25"
+    >
       <div className="w-9/12">
         <h1 className="text-sky-400 text-4xl font-bold text-center">
           Certificate

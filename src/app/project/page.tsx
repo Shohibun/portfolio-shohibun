@@ -141,17 +141,18 @@ export default function Project() {
   }, []);
 
   useEffect(() => {
-    AOS.init({ duration: 800, once: true });
+    AOS.init({ duration: 800, once: false });
+    AOS.refresh();
   }, []);
 
   return (
-    <div className="w-full flex justify-center items-center mt-25">
+    <div id="project" className="w-full flex justify-center items-center mt-25">
       <div className="w-9/12">
         <h1 className="text-sky-400 text-4xl font-bold text-center">Project</h1>
 
         <div
           className="grid grid-cols-2 gap-4 shadow-md border-2 rounded-lg mt-20 hover:shadow-xl"
-          data-aos="zoom-in-up"
+          data-aos="fade-up-right"
         >
           <div className="col-span-1 flex justify-center items-center">
             <div className="p-7">
@@ -211,7 +212,7 @@ export default function Project() {
 
         <div
           className="grid grid-cols-2 gap-4 shadow-md border-2 rounded-lg mt-20 hover:shadow-xl"
-          data-aos="zoom-in-up"
+          data-aos="fade-up-left"
         >
           <div
             className="col-span-1 h-96"
@@ -268,7 +269,7 @@ export default function Project() {
 
         <div
           className="grid grid-cols-2 gap-4 shadow-md border-2 rounded-lg mt-20 hover:shadow-xl"
-          data-aos="zoom-in-up"
+          data-aos="fade-down-right"
         >
           <div className="col-span-1 flex justify-center items-center">
             <div className="p-7">
@@ -330,7 +331,7 @@ export default function Project() {
 
         <div
           className="grid grid-cols-2 gap-4 shadow-md border-2 rounded-lg mt-20 hover:shadow-xl"
-          data-aos="zoom-in-up"
+          data-aos="fade-down-left"
         >
           <div
             className="col-span-1 h-96"
@@ -390,7 +391,7 @@ export default function Project() {
 
         <div
           className="grid grid-cols-2 gap-4 shadow-md border-2 rounded-lg mt-20 hover:shadow-xl"
-          data-aos="zoom-in-up"
+          data-aos="fade-up-right"
         >
           <div className="col-span-1 flex justify-center items-center">
             <div className="p-7">
@@ -448,7 +449,7 @@ export default function Project() {
 
         <div
           className="grid grid-cols-2 gap-4 shadow-md border-2 rounded-lg mt-20 hover:shadow-xl"
-          data-aos="zoom-in-up"
+          data-aos="fade-up-left"
         >
           <div
             className="col-span-1 h-96"
@@ -506,7 +507,7 @@ export default function Project() {
 
         <div
           className="grid grid-cols-2 gap-4 shadow-md border-2 rounded-lg mt-20 hover:shadow-xl"
-          data-aos="zoom-in-up"
+          data-aos="fade-down-right"
         >
           <div className="col-span-1 flex justify-center items-center">
             <div className="p-7">
@@ -568,7 +569,7 @@ export default function Project() {
 
         <div
           className="grid grid-cols-2 gap-4 shadow-md border-2 rounded-lg mt-20 hover:shadow-xl"
-          data-aos="zoom-in-up"
+          data-aos="fade-down-left"
         >
           <div
             className="col-span-1 h-96"

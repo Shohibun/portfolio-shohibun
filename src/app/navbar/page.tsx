@@ -10,7 +10,6 @@ export default function Navbar() {
   return (
     <header className="w-full border-b bg-white shadow-sm fixed top-0 z-50 py-3">
       <div className="w-10/12 mx-auto flex h-16 items-center justify-between px-4">
-        {/* Brand: Avatar + Name */}
         <div className="flex items-center gap-3">
           <Avatar className="w-10 h-10">
             <AvatarImage src="/images/logo.jpg" alt="@shadcn" />
@@ -23,7 +22,6 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Desktop menu */}
         <nav className="hidden md:flex gap-6 items-center">
           {[
             ["#about", "About"],
@@ -42,7 +40,6 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Mobile menu (hamburger) */}
         <div className="md:hidden">
           <Sheet>
             <SheetTrigger asChild>

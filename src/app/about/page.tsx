@@ -80,18 +80,21 @@ export default function About() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center pt-30 border-2 bg-sky-100">
+    <div
+      id="about"
+      className="flex justify-center items-center pt-30 pb-16 border-2 bg-sky-100"
+    >
       <div className="grid w-9/12 grid-cols-2 gap-4">
         <div className="col-span-1 flex items-center">
           <div className="">
-            <h1 className="text-sky-400 text-5xl font-bold">
-              Shohibun Najam Ilma
+            <h1 className="text-sky-400 text-6xl font-bold">
+              Shohibun <br /> Najam Ilma
             </h1>
-            <h2 className="text-gray-500 text-2xl font-bold">
+            <h2 className="text-gray-500 text-3xl font-bold mt-2">
               Frontend Web Developer
             </h2>
 
-            <p className="text-base text-gray-600 mt-5">
+            <p className="text-lg text-gray-600 mt-6">
               A graduate of the Informatics Study Program, Faculty of Computer
               Science, University of Jember, with a GPA of 3.74. Experienced as
               a Front End Developer Intern at PT Central AI, involved in the
@@ -101,33 +104,37 @@ export default function About() {
               Relations Division at HMIF, and also served as a Teaching
               Assistant for the Artificial Intelligence course, enhancing
               technical communication, teamwork, and collaboration skills in
-              both academic and professional settings
+              both academic and professional settings.
             </p>
 
-            <div className="flex justify-around mt-3">
-              <div className="w-5/12">
-                <Button
-                  variant={"ghost"}
-                  className="bg-sky-400 text-white cursor-pointer"
-                >
-                  Curriculum Vitae
-                </Button>
+            <div className="flex justify-around mt-10">
+              <div className="w-7/12">
+                <a href="/Curriculum_Vitae_Shohibun_Najam_Ilma.pdf" download>
+                  <Button
+                    variant={"ghost"}
+                    className="bg-sky-400 text-white text-xl cursor-pointer"
+                  >
+                    Curriculum Vitae
+                  </Button>
+                </a>
               </div>
 
               <div className="w-full">
-                <Button
-                  variant={"ghost"}
-                  className="bg-sky-400 text-white cursor-pointer"
-                >
-                  Portfolio
-                </Button>
+                <a href="/Portfolio_Shohibun.pdf" download>
+                  <Button
+                    variant={"ghost"}
+                    className="bg-sky-400 text-white text-xl cursor-pointer"
+                  >
+                    Portfolio
+                  </Button>
+                </a>
               </div>
             </div>
           </div>
         </div>
 
         <div className="col-span-1 flex justify-center items-center pb-7">
-          <div className="relative w-[300px] h-[450px]">
+          <div className="relative w-[360px] h-[500px]">
             <Particles
               id="tsparticles"
               options={particlesOptions}
@@ -138,8 +145,8 @@ export default function About() {
               <Image
                 src="/images/icon.jpg"
                 alt="Shohibun Najam Ilma"
-                width={300}
-                height={300}
+                width={350}
+                height={350}
                 className="rounded-full"
               />
             </div>
