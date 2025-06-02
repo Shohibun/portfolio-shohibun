@@ -20,6 +20,10 @@ export default function Certificate() {
   const [isOpen5, setIsOpen5] = useState(false);
   const [isOpen6, setIsOpen6] = useState(false);
   const [isOpen7, setIsOpen7] = useState(false);
+  const [isOpen8, setIsOpen8] = useState(false);
+  const [isOpen9, setIsOpen9] = useState(false);
+  const [isOpen10, setIsOpen10] = useState(false);
+  const [isOpen11, setIsOpen11] = useState(false);
 
   const tiltRef1 = useRef<HTMLDivElement>(null);
   const tiltRef2 = useRef<HTMLDivElement>(null);
@@ -28,6 +32,10 @@ export default function Certificate() {
   const tiltRef5 = useRef<HTMLDivElement>(null);
   const tiltRef6 = useRef<HTMLDivElement>(null);
   const tiltRef7 = useRef<HTMLDivElement>(null);
+  const tiltRef8 = useRef<HTMLDivElement>(null);
+  const tiltRef9 = useRef<HTMLDivElement>(null);
+  const tiltRef10 = useRef<HTMLDivElement>(null);
+  const tiltRef11 = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const refs = [
@@ -38,6 +46,10 @@ export default function Certificate() {
       tiltRef5,
       tiltRef6,
       tiltRef7,
+      tiltRef8,
+      tiltRef9,
+      tiltRef10,
+      tiltRef11,
     ];
 
     const initTilt = () => {
@@ -453,6 +465,210 @@ export default function Certificate() {
                   <p className="text-gray-600 text-base mt-4">
                     This certificate is awarded as proof of having completed the
                     JavaScript learning activities.
+                  </p>
+                </div>
+              </div>
+            </CarouselItem>
+
+            <CarouselItem>
+              <div className="flex flex-col items-center">
+                <div
+                  className="w-[500px] h-auto"
+                  ref={tiltRef8}
+                  onClick={() => setIsOpen8(true)}
+                >
+                  <Image
+                    src="/images/certificate_8.jpg"
+                    alt="certificate8"
+                    width={500}
+                    height={350}
+                    className="rounded-lg cursor-pointer"
+                  />
+                </div>
+
+                <Modal
+                  isOpen={isOpen8}
+                  onRequestClose={() => setIsOpen8(false)}
+                  className="flex justify-center items-center h-full"
+                  overlayClassName="fixed inset-0 bg-black/70 z-50"
+                >
+                  <div className="relative">
+                    <button
+                      onClick={() => setIsOpen8(false)}
+                      className="absolute top-2 right-5 text-black text-3xl font-bold cursor-pointer"
+                    >
+                      &times;
+                    </button>
+                    <Image
+                      src="/images/certificate_8.jpg"
+                      alt="project8"
+                      width={800}
+                      height={800}
+                      className="rounded-lg"
+                    />
+                  </div>
+                </Modal>
+
+                <div className="text-center mt-10">
+                  <h1 className="text-2xl font-black text-sky-400">
+                    Full Stack Web Developer
+                  </h1>
+                  <p className="text-gray-600 text-base font-bold">2023</p>
+                  <p className="text-gray-600 text-base mt-4">
+                    This certificate is awarded as proof of completion of Full
+                    Stack Web Developer learning activities.
+                  </p>
+                </div>
+              </div>
+            </CarouselItem>
+
+            <CarouselItem>
+              <div className="flex flex-col items-center">
+                <div
+                  className="w-[500px] h-auto"
+                  ref={tiltRef9}
+                  onClick={() => setIsOpen9(true)}
+                >
+                  <Image
+                    src="/images/certificate_9.jpg"
+                    alt="certificate9"
+                    width={500}
+                    height={350}
+                    className="rounded-lg cursor-pointer"
+                  />
+                </div>
+
+                <Modal
+                  isOpen={isOpen9}
+                  onRequestClose={() => setIsOpen9(false)}
+                  className="flex justify-center items-center h-full"
+                  overlayClassName="fixed inset-0 bg-black/70 z-50"
+                >
+                  <div className="relative">
+                    <button
+                      onClick={() => setIsOpen9(false)}
+                      className="absolute top-2 right-5 text-black text-3xl font-bold cursor-pointer"
+                    >
+                      &times;
+                    </button>
+                    <Image
+                      src="/images/certificate_9.jpg"
+                      alt="project9"
+                      width={800}
+                      height={800}
+                      className="rounded-lg"
+                    />
+                  </div>
+                </Modal>
+
+                <div className="text-center mt-10">
+                  <h1 className="text-2xl font-black text-sky-400">Cumlaude</h1>
+                  <p className="text-gray-600 text-base font-bold">2023</p>
+                  <p className="text-gray-600 text-base mt-4">
+                    This certificate is awarded as evidence of a student with
+                    outstanding achievements with honors.
+                  </p>
+                </div>
+              </div>
+            </CarouselItem>
+
+            <CarouselItem>
+              <div className="flex flex-col items-center">
+                <div
+                  className="w-[500px] h-auto"
+                  ref={tiltRef10}
+                  onClick={() => setIsOpen10(true)}
+                >
+                  <Image
+                    src="/images/certificate_10.png"
+                    alt="certificate10"
+                    width={500}
+                    height={350}
+                    className="rounded-lg cursor-pointer"
+                  />
+                </div>
+
+                <Modal
+                  isOpen={isOpen10}
+                  onRequestClose={() => setIsOpen10(false)}
+                  className="flex justify-center items-center h-full"
+                  overlayClassName="fixed inset-0 bg-black/70 z-50"
+                >
+                  <div className="relative">
+                    <button
+                      onClick={() => setIsOpen10(false)}
+                      className="absolute top-2 right-5 text-black text-3xl font-bold cursor-pointer"
+                    >
+                      &times;
+                    </button>
+                    <Image
+                      src="/images/certificate_10.png"
+                      alt="project10"
+                      width={800}
+                      height={800}
+                      className="rounded-lg"
+                    />
+                  </div>
+                </Modal>
+
+                <div className="text-center mt-10">
+                  <h1 className="text-2xl font-black text-sky-400">
+                    ICOMITEE 2021
+                  </h1>
+                  <p className="text-gray-600 text-base font-bold">2021</p>
+                  <p className="text-gray-600 text-base mt-4">
+                    This certificate is awarded as proof of participation in the
+                    ICOMITEE 2021 launching event.
+                  </p>
+                </div>
+              </div>
+            </CarouselItem>
+
+            <CarouselItem>
+              <div className="flex flex-col items-center">
+                <div
+                  className="w-[500px] h-auto"
+                  ref={tiltRef11}
+                  onClick={() => setIsOpen11(true)}
+                >
+                  <Image
+                    src="/images/certificate_11.png"
+                    alt="certificate11"
+                    width={500}
+                    height={350}
+                    className="rounded-lg cursor-pointer"
+                  />
+                </div>
+
+                <Modal
+                  isOpen={isOpen11}
+                  onRequestClose={() => setIsOpen11(false)}
+                  className="flex justify-center items-center h-full"
+                  overlayClassName="fixed inset-0 bg-black/70 z-50"
+                >
+                  <div className="relative">
+                    <button
+                      onClick={() => setIsOpen11(false)}
+                      className="absolute top-2 right-5 text-black text-3xl font-bold cursor-pointer"
+                    >
+                      &times;
+                    </button>
+                    <Image
+                      src="/images/certificate_11.png"
+                      alt="project11"
+                      width={800}
+                      height={800}
+                      className="rounded-lg"
+                    />
+                  </div>
+                </Modal>
+
+                <div className="text-center mt-10">
+                  <h1 className="text-2xl font-black text-sky-400">TOEFL</h1>
+                  <p className="text-gray-600 text-base font-bold">2020</p>
+                  <p className="text-gray-600 text-base mt-4">
+                    This certificate is awarded as proof of having completed the
+                    preparation class for one month.
                   </p>
                 </div>
               </div>
