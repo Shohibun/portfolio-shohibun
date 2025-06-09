@@ -141,8 +141,8 @@ export default function Project() {
   }, []);
 
   useEffect(() => {
-    AOS.init({ duration: 800, once: false });
-    AOS.refresh();
+    AOS.init({ duration: 800, once: true });
+    // AOS.refresh();
   }, []);
 
   return (

@@ -20,8 +20,8 @@ import { useEffect } from "react";
 
 export default function Skill() {
   useEffect(() => {
-    AOS.init({ duration: 800, once: false });
-    AOS.refresh();
+    AOS.init({ duration: 800, once: true });
+    // AOS.refresh();
   }, []);
 
   return (

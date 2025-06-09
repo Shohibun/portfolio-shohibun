@@ -61,7 +61,7 @@ export default function Certificate() {
             glare: true,
             "max-glare": 0.3,
             scale: 1.05,
-            reset: false,
+            reset: true,
           });
         }
       });
