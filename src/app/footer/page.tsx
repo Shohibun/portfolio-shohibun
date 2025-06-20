@@ -8,8 +8,8 @@ export default function Footer() {
   return (
     <div className="w-full flex justify-center items-center bg-sky-400 mt-35">
       <div className="w-9/12 mb-12">
-        <div className="grid grid-cols-3 gap-20 p-7">
-          <div className="col-span-1">
+        <div className="grid md:grid-cols-3 md:gap-20 p-7">
+          <div className="md:col-span-1">
             <Image
               src="/images/logo.jpg"
               alt="photo"
@@ -28,7 +28,7 @@ export default function Footer() {
             </h2>
           </div>
 
-          <div className="col-span-1 my-auto">
+          <div className="md:col-span-1 my-auto mt-5 md:mt-0">
             <p className="text-sm font-bold text-white">Email:</p>
             <p className="text-sm text-white mt-1">shohibunnajam@gmail.com</p>
 
@@ -36,7 +36,7 @@ export default function Footer() {
             <p className="text-sm text-white mt-1">+62-87896773970</p>
           </div>
 
-          <div className="col-span-1 flex justify-center items-center">
+          <div className="md:col-span-1 flex justify-center items-center mt-10 md:mt-0">
             <div className="grid grid-cols-3 gap-4">
               <div className="col-span-1">
                 <a href="https://github.com/Shohibun">

@@ -132,3 +132,9 @@
 html {
   scroll-behavior: smooth;
 }
+
+@media only screen and (max-width: 600px) {
+  .custom-display {
+    display: none;
+  }
+}

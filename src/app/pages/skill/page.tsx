@@ -21,7 +21,6 @@ import { useEffect } from "react";
 export default function Skill() {
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
-    // AOS.refresh();
   }, []);
 
   return (
@@ -41,7 +40,7 @@ export default function Skill() {
             </TabsList>
             <TabsContent value="soft">
               <Card>
-                <CardContent className="grid grid-cols-4 gap-4">
+                <CardContent className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="col-span-1">
                     <h1 className="font-bold text-gray-600 text-center hover:text-sky-400">
                       Communication
@@ -70,7 +69,7 @@ export default function Skill() {
             </TabsContent>
             <TabsContent value="hard">
               <Card>
-                <CardContent className="grid grid-cols-4 gap-4">
+                <CardContent className="grid grid-cols-2 md:grid-cols-4 gap-4">
                   <div className="col-span-1 flex justify-center items-center mt-2 animate-pulse">
                     <HtmlIcon />
                   </div>
