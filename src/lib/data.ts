@@ -235,11 +235,11 @@ export const experiences: Experience[] = [
     description:
       "Working as a Full Stack Developer responsible for developing and maintaining Tokosenyum's digital ecosystem across web and mobile platforms. Involved in designing, implementing, and optimizing scalable features, integrating APIs, improving user experience, and ensuring seamless performance across applications.",
     achievements: [
-      "Developed and maintained the Tokosenyum web platform",
-      "Contributed to mobile application development and feature implementation",
-      "Integrated APIs and backend services for business operations",
-      "Improved application performance and user experience",
-      "Collaborated with cross-functional teams to deliver new product features",
+      "Developed Flutter mobile applications for Tokosenyum",
+  "Built responsive web interfaces using Next.js",
+  "Integrated REST APIs and backend services",
+  "Implemented state management and reusable UI components",
+  "Collaborated with designers and backend engineers"
     ],
   },
 ];
