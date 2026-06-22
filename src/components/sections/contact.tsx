@@ -23,7 +23,7 @@ export function Contact() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: "YOUR_WEB3FORMS_KEY", // User needs to replace this
+          access_key: "1c388c91-347d-4e12-80d8-4862fa076ae3",
           name: formData.name,
           email: formData.email,
           message: formData.message,
