@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 
 const categories = [
   { key: "all", label: "All" },
+  { key: "work", label: "Work" },
   { key: "education", label: "Education" },
   { key: "internship", label: "Internship" },
   { key: "organization", label: "Organization" },

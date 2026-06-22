@@ -21,7 +21,7 @@ export interface Project {
 
 export interface Experience {
   id: number;
-  category: "education" | "internship" | "organization" | "course";
+  category: "education" | "internship" | "organization" | "course" | "work";
   title: string;
   position: string;
   organization: string;
@@ -117,6 +117,24 @@ export const stats = [
 export const experiences: Experience[] = [
   {
     id: 1,
+    category: "organization",
+    title: "Member of Public Relations Division",
+    position: "Division Member",
+    organization: "HMIF - Faculty of Computer Science",
+    location: "University of Jember",
+    startDate: "2019",
+    endDate: "2021",
+    description:
+      "Served as an active member of the Public Relations Division of the Informatics Student Association (HMIF). Responsible for supporting communication activities, managing information dissemination, and assisting in organizing student events and collaborations with external organizations.",
+    achievements: [
+      "Supported public relations campaigns",
+      "Assisted event coordination and organization",
+      "Managed communication with students and external partners",
+    ],
+  },
+
+  {
+    id: 2,
     category: "education",
     title: "S1 - Informatics",
     position: "Bachelor of Informatics",
@@ -125,30 +143,14 @@ export const experiences: Experience[] = [
     startDate: "2019",
     endDate: "2023",
     description:
-      "During college, I actively participated in lectures, student organizations, as well as seminars and workshops to develop insights and networks. I also have experience as a teaching assistant for the Artificial Intelligence course, helping students understand the material, grading assignments, and supervising practical sessions.",
+      "Actively participated in academic activities, student organizations, seminars, and workshops to enhance technical knowledge and professional networking. Also served as a Teaching Assistant for the Artificial Intelligence course, supporting students through mentoring, assignment evaluation, and practical sessions.",
     achievements: [
       "GPA: 3.74 (Cum Laude)",
-      "Teaching Assistant for AI course",
-      "Active in student organizations",
+      "Teaching Assistant for Artificial Intelligence course",
+      "Active participation in student organizations and academic events",
     ],
   },
-  {
-    id: 2,
-    category: "internship",
-    title: "Front End Developer Intern",
-    position: "Front End Developer",
-    organization: "PT Central AI",
-    location: "Remote",
-    startDate: "2022",
-    endDate: "2023",
-    description:
-      "Involved in the development of the company's website using JavaScript and Python with frameworks such as React.js, Next.js, and Flask. Developed multiple products including POS system, PWA version, and main company website.",
-    achievements: [
-      "Built company website with React.js & Next.js",
-      "Developed POS system for business operators",
-      "Created PWA version of main site",
-    ],
-  },
+
   {
     id: 3,
     category: "organization",
@@ -159,47 +161,16 @@ export const experiences: Experience[] = [
     startDate: "2021",
     endDate: "2022",
     description:
-      "Led the public relations division, managing communications, events, and external partnerships for the Informatics Student Association.",
+      "Led the Public Relations Division of the Informatics Student Association (HMIF), overseeing communication strategies, event promotions, and collaboration initiatives with both internal and external stakeholders.",
     achievements: [
-      "Led communications strategy",
-      "Managed team of division members",
-      "Organized public-facing events",
+      "Led public relations and communication strategies",
+      "Managed and coordinated division members",
+      "Organized and promoted student activities and events",
     ],
   },
+
   {
     id: 4,
-    category: "organization",
-    title: "Member of Public Relations Division",
-    position: "Division Member",
-    organization: "HMIF - Faculty of Computer Science",
-    location: "University of Jember",
-    startDate: "2019",
-    endDate: "2021",
-    description:
-      "Served as an active member of the public relations division, supporting communications and event organization.",
-    achievements: [
-      "Supported PR campaigns",
-      "Assisted event coordination",
-    ],
-  },
-  {
-    id: 5,
-    category: "course",
-    title: "Full Stack Web Developer",
-    position: "Student",
-    organization: "SIM - K HariSenin",
-    location: "Online",
-    startDate: "2022",
-    endDate: "2023",
-    description:
-      "Completed intensive full-stack web development bootcamp covering frontend and backend technologies.",
-    achievements: [
-      "Completed full curriculum",
-      "Built capstone projects",
-    ],
-  },
-  {
-    id: 6,
     category: "course",
     title: "Front End JavaScript Wave 2",
     position: "Student",
@@ -208,14 +179,70 @@ export const experiences: Experience[] = [
     startDate: "2022",
     endDate: "2022",
     description:
-      "Completed JavaScript learning activities focused on front-end development with modern frameworks.",
+      "Completed an intensive Front-End JavaScript program covering modern web development concepts, JavaScript fundamentals, React.js, and collaborative project development.",
     achievements: [
       "Mastered JavaScript fundamentals",
       "Built interactive web applications",
+      "Collaborated on team-based projects",
+    ],
+  },
+
+  {
+    id: 5,
+    category: "internship",
+    title: "Front End Developer Intern",
+    position: "Front End Developer",
+    organization: "PT Central AI",
+    location: "Remote",
+    startDate: "2022",
+    endDate: "2023",
+    description:
+      "Contributed to the development of company products and websites using React.js, Next.js, Flask, and modern frontend technologies. Participated in building web applications, POS systems, and Progressive Web Applications (PWA).",
+    achievements: [
+      "Developed company website using React.js and Next.js",
+      "Built POS system features for business operations",
+      "Created and maintained Progressive Web Applications (PWA)",
+    ],
+  },
+
+  {
+    id: 6,
+    category: "course",
+    title: "Full Stack Web Developer",
+    position: "Student",
+    organization: "SIM-K HariSenin",
+    location: "Online",
+    startDate: "2023",
+    endDate: "2024",
+    description:
+      "Completed a Full Stack Web Development bootcamp covering frontend and backend technologies, software development fundamentals, database management, and deployment practices.",
+    achievements: [
+      "Completed full-stack development curriculum",
+      "Built capstone web development projects",
+      "Learned frontend, backend, and database integration",
+    ],
+  },
+
+  {
+    id: 7,
+    category: "work",
+    title: "Full Stack Developer",
+    position: "Full Stack Developer",
+    organization: "PT. Senyum Media Utama",
+    location: "Indonesia",
+    startDate: "2026",
+    endDate: "Present",
+    description:
+      "Working as a Full Stack Developer responsible for developing and maintaining Tokosenyum's digital ecosystem across web and mobile platforms. Involved in designing, implementing, and optimizing scalable features, integrating APIs, improving user experience, and ensuring seamless performance across applications.",
+    achievements: [
+      "Developed and maintained the Tokosenyum web platform",
+      "Contributed to mobile application development and feature implementation",
+      "Integrated APIs and backend services for business operations",
+      "Improved application performance and user experience",
+      "Collaborated with cross-functional teams to deliver new product features",
     ],
   },
 ];
-
 // ===== PROJECTS =====
 
 export const projects: Project[] = [
