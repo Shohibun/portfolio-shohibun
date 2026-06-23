@@ -4,15 +4,20 @@ import { motion } from "framer-motion";
 import {
   SiHtml5, SiCss, SiJavascript, SiTypescript, SiReact, SiNextdotjs,
   SiTailwindcss, SiShadcnui, SiFlutter, SiDart, SiGit, SiGithub,
-  SiFigma, SiPostman,
+  SiFigma, SiPostman, SiPython, SiMui, SiFlask, SiVuedotjs, SiBootstrap,
+  SiLottiefiles, SiRedux, SiPhp, SiLaravel, SiVercel, SiNetlify, SiGitlab,
+  SiDocker, SiLaragon, SiLucide
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
+import { FaFontAwesome } from "react-icons/fa";
 import type { Skill } from "@/lib/data";
 
 const iconMap: Record<string, React.ElementType> = {
   SiHtml5, SiCss, SiJavascript, SiTypescript, SiReact, SiNextdotjs,
   SiTailwindcss, SiShadcnui, SiFlutter, SiDart, SiGit, SiGithub,
-  SiFigma, SiPostman, VscVscode,
+  SiFigma, SiPostman, VscVscode, SiPython, SiMui, SiFlask, SiVuedotjs,
+  SiBootstrap, SiLottiefiles, SiRedux, SiPhp, SiLaravel, SiVercel,
+  SiNetlify, SiGitlab, SiDocker, SiLaragon, FaFontAwesome, SiLucide
 };
 
 interface SkillCardProps {

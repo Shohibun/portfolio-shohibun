@@ -21,7 +21,7 @@ export interface Project {
 
 export interface Experience {
   id: number;
-  category: "education" | "internship" | "organization" | "course" | "work";
+  category: "education" | "internship" | "organization" | "course" | "job";
   title: string;
   position: string;
   organization: string;
@@ -225,7 +225,7 @@ export const experiences: Experience[] = [
 
   {
     id: 7,
-    category: "work",
+    category: "job",
     title: "Full Stack Developer",
     position: "Full Stack Developer",
     organization: "PT. Senyum Media Utama",
@@ -399,23 +399,44 @@ export const projects: Project[] = [
 // ===== SKILLS =====
 
 export const skills: Skill[] = [
-  // Frontend
+  // ===== Languages =====
   { name: "HTML", icon: "SiHtml5", category: "frontend" },
   { name: "CSS", icon: "SiCss", category: "frontend" },
   { name: "JavaScript", icon: "SiJavascript", category: "frontend" },
   { name: "TypeScript", icon: "SiTypescript", category: "frontend" },
+  { name: "Python", icon: "SiPython", category: "frontend" },
+  { name: "PHP", icon: "SiPhp", category: "frontend" },
+  { name: "Dart", icon: "SiDart", category: "mobile" },
+
+  // ===== Frameworks & Libraries =====
   { name: "React", icon: "SiReact", category: "frontend" },
   { name: "Next.js", icon: "SiNextdotjs", category: "frontend" },
-  { name: "Tailwind CSS", icon: "SiTailwindcss", category: "frontend" },
-  { name: "Shadcn UI", icon: "SiShadcnui", category: "frontend" },
-  // Mobile
+  { name: "Vue", icon: "SiVuedotjs", category: "frontend" },
   { name: "Flutter", icon: "SiFlutter", category: "mobile" },
-  { name: "Dart", icon: "SiDart", category: "mobile" },
-  // Tools
+  { name: "Laravel", icon: "SiLaravel", category: "frontend" },
+  { name: "Flask", icon: "SiFlask", category: "frontend" },
+  { name: "Tailwind CSS", icon: "SiTailwindcss", category: "frontend" },
+  { name: "Bootstrap", icon: "SiBootstrap", category: "frontend" },
+  { name: "MUI", icon: "SiMui", category: "frontend" },
+  { name: "Shadcn UI", icon: "SiShadcnui", category: "frontend" },
+  { name: "Flowbite", icon: "SiTailwindcss", category: "frontend" },
+  { name: "Redux", icon: "SiRedux", category: "frontend" },
+  { name: "Riverpod", icon: "SiDart", category: "mobile" },
+  { name: "Provider", icon: "SiFlutter", category: "mobile" },
+  { name: "Lottie", icon: "SiLottiefiles", category: "frontend" },
+  { name: "Lucide", icon: "SiLucide", category: "frontend" },
+  { name: "Font Awesome", icon: "FaFontAwesome", category: "frontend" },
+
+  // ===== Tools =====
   { name: "Git", icon: "SiGit", category: "tools" },
   { name: "GitHub", icon: "SiGithub", category: "tools" },
-  { name: "Figma", icon: "SiFigma", category: "tools" },
+  { name: "GitLab", icon: "SiGitlab", category: "tools" },
+  { name: "Docker", icon: "SiDocker", category: "tools" },
   { name: "Postman", icon: "SiPostman", category: "tools" },
+  { name: "Laragon", icon: "SiLaragon", category: "tools" },
+  { name: "Vercel", icon: "SiVercel", category: "tools" },
+  { name: "Netlify", icon: "SiNetlify", category: "tools" },
+  { name: "Figma", icon: "SiFigma", category: "tools" },
   { name: "VS Code", icon: "VscVscode", category: "tools" },
 ];
 
