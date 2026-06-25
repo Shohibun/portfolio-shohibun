@@ -9,7 +9,7 @@ export interface Project {
   image: string;
   link: string;
   github?: string;
-  category: "frontend" | "flutter" | "fullstack";
+  category: "frontend" | "mobile";
   techStack: string[];
   features?: string[];
   problem?: string;
@@ -394,6 +394,74 @@ export const projects: Project[] = [
       "Modern UI design",
     ],
   },
+  {
+  id: 9,
+  slug: "toko-senyum-web",
+  title: "Toko Senyum Web Platform",
+  description:
+    "A modern e-commerce platform that enables customers to browse, search, and purchase products online with an intuitive shopping experience.",
+  longDescription:
+    "Toko Senyum Web Platform is a comprehensive e-commerce solution developed to support online shopping activities for customers across Indonesia. The platform provides product discovery, cart management, secure checkout, customer authentication, and promotional features. It is designed with responsive layouts and optimized performance to deliver a seamless shopping experience across desktop and mobile browsers.",
+  image: "/images/Project_9.png",
+  link: "https://tokosenyum.com/",
+  category: "frontend",
+  techStack: [
+    "Next.js",
+    "React.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "REST API",
+  ],
+  features: [
+    "Product catalog and search",
+    "Category and brand filtering",
+    "Shopping cart management",
+    "Customer authentication",
+    "Promotion and discount system",
+    "Responsive design",
+    "Order checkout process",
+    "Real-time product information",
+  ],
+  problem:
+    "Customers need a fast and convenient way to purchase products online without visiting physical stores.",
+  solution:
+    "Developed a responsive e-commerce platform that simplifies product discovery, ordering, and customer interactions while providing a smooth shopping experience.",
+},
+{
+  id: 10,
+  slug: "toko-senyum-mobile",
+  title: "Toko Senyum Mobile App",
+  description:
+    "A cross-platform mobile commerce application that allows customers to shop, track orders, access promotions, and manage their accounts directly from Android and iOS devices.",
+  longDescription:
+    "Toko Senyum Mobile App is a mobile-first e-commerce application developed for Android and iOS platforms. The application focuses on delivering a fast, user-friendly, and engaging shopping experience through optimized mobile interfaces, authentication via phone number or email, promotional campaigns, and integrated ordering processes. The app is designed to support scalability and long-term business growth.",
+  image: "/images/Project_10.jpeg",
+  link: "#",
+  category: "mobile",
+  techStack: [
+    "Flutter",
+    "Dart",
+    "REST API",
+    "Firebase",
+    "Bloc",
+    "Android",
+    "iOS"
+  ],
+  features: [
+    "Phone number and email login",
+    "OTP authentication",
+    "Product browsing and search",
+    "Promotion and voucher system",
+    "Shopping cart",
+    "Order management",
+    "Push notifications",
+    "Cross-platform Android & iOS support",
+  ],
+  problem:
+    "Customers require a faster and more accessible shopping experience directly from their smartphones.",
+  solution:
+    "Built a cross-platform mobile application that enables users to browse products, receive promotions, place orders, and manage their accounts conveniently from mobile devices.",
+},
 ];
 
 // ===== SKILLS =====

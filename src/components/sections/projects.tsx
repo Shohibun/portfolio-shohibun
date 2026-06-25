@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 const filters = [
   { key: "all", label: "All" },
   { key: "frontend", label: "FrontEnd" },
-  { key: "flutter", label: "Flutter" },
+  { key: "mobile", label: "Mobile" },
 ] as const;
 
 export function Projects() {
