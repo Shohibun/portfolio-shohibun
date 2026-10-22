@@ -1,39 +1,47 @@
 "use client";
 
 import { useEffect, type ReactNode } from "react";
-import { useTheme } from "@/hooks/useTheme";
+import { ThemeProvider } from "next-themes";
 import Lenis from "lenis";
 
 function LenisProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
+    // Respect user's reduced-motion preference
+    if (typeof window !== "undefined") {
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (prefersReducedMotion) return;
+    }
+
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.0,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      touchMultiplier: 2,
+      touchMultiplier: 1.5,
     });
 
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
+    const rafId = requestAnimationFrame(raf);
 
-    return () => lenis.destroy();
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+    };
   }, []);
 
   return <>{children}</>;
 }
 
-function ThemeInitializer({ children }: { children: ReactNode }) {
-  // Initialize theme from hook (which reads localStorage)
-  useTheme();
-  return <>{children}</>;
-}
-
 export function Providers({ children }: { children: ReactNode }) {
   return (
-    <ThemeInitializer>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange={false}
+    >
       <LenisProvider>{children}</LenisProvider>
-    </ThemeInitializer>
+    </ThemeProvider>
   );
 }

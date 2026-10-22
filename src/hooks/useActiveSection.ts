@@ -2,32 +2,50 @@
 
 import { useState, useEffect } from "react";
 
-const SECTIONS = ["about", "experience", "projects", "skills", "certificates"];
+const SECTIONS = [
+  "home",
+  "about",
+  "skills",
+  "projects",
+  "experience",
+  "education",
+  "certificates",
+  "services",
+  "contact",
+];
 
 export function useActiveSection() {
-  const [activeSection, setActiveSection] = useState<string>("");
+  const [activeSection, setActiveSection] = useState<string>("home");
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
+    const handleScroll = () => {
+      // If user has scrolled near the bottom of the page, activate contact
+      const isBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 120;
+      if (isBottom) {
+        setActiveSection("contact");
+        return;
+      }
 
-    SECTIONS.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveSection(id);
+      let currentSection = "home";
+      for (const id of SECTIONS) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 200) {
+            currentSection = id;
           }
-        },
-        { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
-      );
+        }
+      }
 
-      observer.observe(el);
-      observers.push(observer);
-    });
+      setActiveSection(currentSection);
+    };
 
-    return () => observers.forEach((o) => o.disconnect());
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return activeSection;

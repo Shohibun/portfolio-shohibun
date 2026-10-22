@@ -2,34 +2,54 @@
 
 export interface Project {
   id: number;
-  slug: string;
   title: string;
+  category: string;
   description: string;
-  longDescription?: string;
   image: string;
   link: string;
-  github?: string;
-  category: "frontend" | "mobile";
   techStack: string[];
-  features?: string[];
-  problem?: string;
-  solution?: string;
-  challenges?: string;
-  results?: string;
-  lessons?: string;
+  features: string[];
 }
 
 export interface Experience {
   id: number;
-  category: "education" | "internship" | "organization" | "course" | "job";
-  title: string;
-  position: string;
-  organization: string;
+  category: "job" | "internship" | "academic";
+  role: string;
+  company: string;
   location: string;
-  startDate: string;
-  endDate: string;
+  period: string;
   description: string;
-  achievements?: string[];
+  responsibilities: string[];
+  isCurrent?: boolean;
+}
+
+export interface EducationItem {
+  id: number;
+  type: "degree" | "bootcamp";
+  title: string;
+  institution: string;
+  period: string;
+  location?: string;
+  achievement?: string;
+  description: string;
+  highlights: string[];
+}
+
+export interface OrganizationItem {
+  id: number;
+  role: string;
+  organization: string;
+  period: string;
+  description: string;
+  responsibilities: string[];
+}
+
+export interface ServiceItem {
+  id: number;
+  title: string;
+  description: string;
+  technologies: string[];
+  icon: string;
 }
 
 export interface Certificate {
@@ -41,10 +61,17 @@ export interface Certificate {
   image: string;
 }
 
-export interface Skill {
+export interface SkillItem {
   name: string;
-  icon: string; // react-icons identifier
-  category: "frontend" | "mobile" | "tools";
+  icon: string;
+  highlight?: boolean;
+}
+
+export interface SkillCategoryGroup {
+  id: string;
+  name: string;
+  description: string;
+  skills: SkillItem[];
 }
 
 export interface SocialLink {
@@ -53,31 +80,41 @@ export interface SocialLink {
   icon: string;
 }
 
-// ===== PERSONAL INFO =====
+// ===== PERSONAL & BRANDING INFO =====
 
 export const personalInfo = {
   name: "Shohibun Najam Ilma",
-  firstName: "Shohibun",
-  titles: ["Mobile Developer", "FrontEnd Developer"],
+  headline: "Software Developer | Web • Mobile • Desktop",
+  greeting: "Hi, I'm",
+  valueProposition: "Building interfaces. Creating experiences. Bringing ideas to life.",
+  supportingParagraph:
+    "Software Developer experienced in building web platforms, cross-platform mobile applications, and desktop solutions, with a strong focus on frontend engineering, reusable interfaces, responsive design, and API integration.",
   email: "shohibunnajam@gmail.com",
-  location: "Jember, Indonesia",
-  university: "University of Jember",
-  degree: "Bachelor of Informatics",
-  bio: "A graduate of the Informatics Study Program, Faculty of Computer Science, University of Jember, with a GPA of 3.74. Experienced as a Front End Developer Intern at PT Central AI, involved in the development of the company's website using JavaScript and Python with frameworks such as React.js, Next.js, and Flask.",
-  valueProposition:
-    "I build modern web and mobile applications with clean design, excellent user experience, and scalable architecture.",
+  location: "Jember, Jawa Timur, Indonesia",
   profileImage: "/images/icon.jpg",
-  logo: "/images/logo.jpg",
+  logo: "/images/logo-icon.png",
   cvUrl: "/Curriculum_Vitae_Shohibun_Najam_Ilma.pdf",
-  portfolioUrl: "/Portfolio_Shohibun.pdf",
 };
+
+// ===== NAVIGATION =====
+
+export const navItems = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
+  { label: "Education", href: "#education" },
+  { label: "Certificates", href: "#certificates" },
+  { label: "Contact", href: "#contact" },
+];
 
 // ===== SOCIAL LINKS =====
 
 export const socialLinks: SocialLink[] = [
   {
     name: "GitHub",
-    url: "https://github.com/Shohibun",
+    url: "https://github.com/shohibun",
     icon: "FiGithub",
   },
   {
@@ -86,517 +123,400 @@ export const socialLinks: SocialLink[] = [
     icon: "FiLinkedin",
   },
   {
+    name: "GitLab",
+    url: "https://gitlab.com/shohibunnajam",
+    icon: "FiGitlab",
+  },
+  {
     name: "Instagram",
     url: "https://www.instagram.com/shohibun.najam/",
     icon: "FiInstagram",
   },
 ];
 
-// ===== NAV ITEMS =====
+// ===== TECHNICAL SKILLS (5 CATEGORIES) =====
 
-export const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Certificates", href: "#certificates" },
-  { label: "Contact", href: "#contact" },
-];
-
-// ===== STATS =====
-
-export const stats = [
-  { label: "Projects", value: 8, suffix: "+" },
-  { label: "Certificates", value: 10, suffix: "+" },
-  { label: "Experience", value: 3, suffix: "+ yrs" },
-  { label: "Technologies", value: 15, suffix: "+" },
-];
-
-// ===== EXPERIENCES =====
-
-export const experiences: Experience[] = [
+export const skillCategories: SkillCategoryGroup[] = [
   {
-    id: 1,
-    category: "organization",
-    title: "Member of Public Relations Division",
-    position: "Division Member",
-    organization: "HMIF - Faculty of Computer Science",
-    location: "University of Jember",
-    startDate: "2019",
-    endDate: "2021",
-    description:
-      "Served as an active member of the Public Relations Division of the Informatics Student Association (HMIF). Responsible for supporting communication activities, managing information dissemination, and assisting in organizing student events and collaborations with external organizations.",
-    achievements: [
-      "Supported public relations campaigns",
-      "Assisted event coordination and organization",
-      "Managed communication with students and external partners",
+    id: "frontend",
+    name: "Frontend & Web",
+    description: "Core web standards and modern component frameworks.",
+    skills: [
+      { name: "React", icon: "SiReact", highlight: true },
+      { name: "Next.js", icon: "SiNextdotjs", highlight: true },
+      { name: "TypeScript", icon: "SiTypescript", highlight: true },
+      { name: "JavaScript", icon: "SiJavascript", highlight: true },
+      { name: "Vue.js", icon: "SiVuedotjs" },
+      { name: "Svelte", icon: "SiSvelte" },
+      { name: "HTML5", icon: "SiHtml5" },
+      { name: "CSS3", icon: "SiCss" },
     ],
   },
-
   {
-    id: 2,
-    category: "education",
-    title: "S1 - Informatics",
-    position: "Bachelor of Informatics",
-    organization: "University of Jember",
-    location: "Jember, Indonesia",
-    startDate: "2019",
-    endDate: "2023",
-    description:
-      "Actively participated in academic activities, student organizations, seminars, and workshops to enhance technical knowledge and professional networking. Also served as a Teaching Assistant for the Artificial Intelligence course, supporting students through mentoring, assignment evaluation, and practical sessions.",
-    achievements: [
-      "GPA: 3.74 (Cum Laude)",
-      "Teaching Assistant for Artificial Intelligence course",
-      "Active participation in student organizations and academic events",
+    id: "ui",
+    name: "UI & Styling",
+    description: "Design systems, layout utility engines, and animations.",
+    skills: [
+      { name: "Tailwind CSS", icon: "SiTailwindcss", highlight: true },
+      { name: "shadcn/ui", icon: "SiShadcnui", highlight: true },
+      { name: "Framer Motion", icon: "SiFramer", highlight: true },
+      { name: "GSAP", icon: "SiGreensock" },
+      { name: "CSS Modules", icon: "SiCssmodules" },
+      { name: "Responsive Design", icon: "FiLayout", highlight: true },
     ],
   },
-
   {
-    id: 3,
-    category: "organization",
-    title: "Head of Public Relations Division",
-    position: "Division Head",
-    organization: "HMIF - Faculty of Computer Science",
-    location: "University of Jember",
-    startDate: "2021",
-    endDate: "2022",
-    description:
-      "Led the Public Relations Division of the Informatics Student Association (HMIF), overseeing communication strategies, event promotions, and collaboration initiatives with both internal and external stakeholders.",
-    achievements: [
-      "Led public relations and communication strategies",
-      "Managed and coordinated division members",
-      "Organized and promoted student activities and events",
+    id: "mobile-desktop",
+    name: "Mobile & Desktop",
+    description: "Multiplatform application runtimes and native integrations.",
+    skills: [
+      { name: "Flutter", icon: "SiFlutter", highlight: true },
+      { name: "Dart", icon: "SiDart", highlight: true },
+      { name: "Electron", icon: "SiElectron", highlight: true },
+      { name: "Tauri", icon: "SiTauri", highlight: true },
+      { name: "Cross-Platform", icon: "FiSmartphone" },
     ],
   },
-
   {
-    id: 4,
-    category: "course",
-    title: "Front End JavaScript Wave 2",
-    position: "Student",
-    organization: "Binar Academy",
-    location: "Online",
-    startDate: "2022",
-    endDate: "2022",
-    description:
-      "Completed an intensive Front-End JavaScript program covering modern web development concepts, JavaScript fundamentals, React.js, and collaborative project development.",
-    achievements: [
-      "Mastered JavaScript fundamentals",
-      "Built interactive web applications",
-      "Collaborated on team-based projects",
+    id: "backend",
+    name: "Backend & Database",
+    description: "Server environments, REST APIs, and modern BaaS.",
+    skills: [
+      { name: "Python", icon: "SiPython", highlight: true },
+      { name: "Flask", icon: "SiFlask" },
+      { name: "RESTful APIs", icon: "SiPostman", highlight: true },
+      { name: "Supabase", icon: "SiSupabase", highlight: true },
+      { name: "Firebase", icon: "SiFirebase", highlight: true },
     ],
   },
-
   {
-    id: 5,
-    category: "internship",
-    title: "Front End Developer Intern",
-    position: "Front End Developer",
-    organization: "PT Central AI",
-    location: "Remote",
-    startDate: "2022",
-    endDate: "2023",
-    description:
-      "Contributed to the development of company products and websites using React.js, Next.js, Flask, and modern frontend technologies. Participated in building web applications, POS systems, and Progressive Web Applications (PWA).",
-    achievements: [
-      "Developed company website using React.js and Next.js",
-      "Built POS system features for business operations",
-      "Created and maintained Progressive Web Applications (PWA)",
-    ],
-  },
-
-  {
-    id: 6,
-    category: "course",
-    title: "Full Stack Web Developer",
-    position: "Student",
-    organization: "SIM-K HariSenin",
-    location: "Online",
-    startDate: "2023",
-    endDate: "2024",
-    description:
-      "Completed a Full Stack Web Development bootcamp covering frontend and backend technologies, software development fundamentals, database management, and deployment practices.",
-    achievements: [
-      "Completed full-stack development curriculum",
-      "Built capstone web development projects",
-      "Learned frontend, backend, and database integration",
-    ],
-  },
-
-  {
-    id: 7,
-    category: "job",
-    title: "Full Stack Developer",
-    position: "Full Stack Developer",
-    organization: "PT. Senyum Media Utama",
-    location: "Indonesia",
-    startDate: "2026",
-    endDate: "Present",
-    description:
-      "Working as a Full Stack Developer responsible for developing and maintaining Tokosenyum's digital ecosystem across web and mobile platforms. Involved in designing, implementing, and optimizing scalable features, integrating APIs, improving user experience, and ensuring seamless performance across applications.",
-    achievements: [
-      "Developed Flutter mobile applications for Tokosenyum",
-  "Built responsive web interfaces using Next.js",
-  "Integrated REST APIs and backend services",
-  "Implemented state management and reusable UI components",
-  "Collaborated with designers and backend engineers"
+    id: "tools",
+    name: "DevOps & Tools",
+    description: "Version control, developer toolchains, and cloud deployment.",
+    skills: [
+      { name: "Git", icon: "SiGit", highlight: true },
+      { name: "GitHub", icon: "SiGithub", highlight: true },
+      { name: "GitLab", icon: "SiGitlab" },
+      { name: "VS Code", icon: "VscVscode" },
+      { name: "Postman", icon: "SiPostman" },
+      { name: "Vercel", icon: "SiVercel", highlight: true },
+      { name: "Netlify", icon: "SiNetlify" },
+      { name: "Figma", icon: "SiFigma" },
     ],
   },
 ];
-// ===== PROJECTS =====
+
+// ===== FEATURED PROJECTS (ACTUAL WORK) =====
 
 export const projects: Project[] = [
   {
     id: 1,
-    slug: "binar-car-rental",
-    title: "Binar Car Rental",
+    title: "Toko Senyum Web Platform",
+    category: "Web Platform / E-Commerce Retail",
     description:
-      "A website designed to simplify the process of car rental transactions online, allowing users to easily select, book, and rent cars according to their needs.",
-    longDescription:
-      "Binar Car Rental is a comprehensive car rental platform built as part of the Binar Academy bootcamp. The platform enables users to browse available cars, select rental dates, and complete bookings seamlessly. It features a responsive design that works across all devices.",
-    image: "/images/Project.png",
-    link: "https://binar-car.netlify.app/",
-    category: "frontend",
-    techStack: ["HTML", "CSS", "JavaScript", "React.js"],
+      "Platform e-commerce ritel modern yang memfasilitasi pelanggan untuk mencari produk, menjelajahi katalog, dan menyelesaikan transaksi belanja secara mandiri dengan cepat.",
+    image: "/images/tokosenyum.png",
+    link: "https://tokosenyum.com/",
+    techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "REST API"],
     features: [
-      "Car catalog with filtering",
-      "Date-based booking system",
-      "Responsive design",
-      "Interactive UI components",
+      "Dynamic product catalog dengan pencarian dan filter instan",
+      "Shopping cart management dan checkout workflow terstruktur",
+      "Customer authentication, user profile, dan pelacakan pesanan",
+      "Sistem kalkulasi promo, diskon, dan perkiraan ongkos kirim otomatis",
+      "Antarmuka yang dioptimasi secara penuh untuk kenyamanan mobile browser",
     ],
-    problem: "Traditional car rental processes are time-consuming and require physical visits to rental offices.",
-    solution: "Built an intuitive web platform that allows users to browse, compare, and book cars entirely online.",
   },
   {
     id: 2,
-    slug: "second-hand",
-    title: "Second Hand",
+    title: "Central AI Website",
+    category: "Corporate Website / AI Solutions",
     description:
-      "A website aimed at facilitating the buying and selling of second-hand goods online, making it easier for users to find and sell preloved products safely.",
-    image: "/images/Project_2.png",
-    link: "#",
-    category: "frontend",
-    techStack: ["React.js", "Next.js", "Tailwind CSS", "Node.js"],
+      "Website perusahaan PT. Central AI untuk mempresentasikan produk dan layanan berbasis kecerdasan buatan kepada mitra bisnis dan perusahaan.",
+    image: "/images/centralai.png",
+    link: "https://centralai.my.id/",
+    techStack: ["React", "Next.js", "Python", "Flask", "Tailwind CSS"],
     features: [
-      "Product listing & search",
-      "User authentication",
-      "Transaction management",
-      "Image upload & gallery",
+      "Showcase produk solusi AI (OCR processing, chatbot interaktif)",
+      "Presentasi solusi point of sale (POS) dan automated meeting notes",
+      "Integrasi API dengan backend berbasis Python dan Flask",
+      "Desain responsif di desktop, tablet, dan smartphone dengan animasi yang mulus",
     ],
-    problem: "Buying and selling second-hand goods lacks a trustworthy, user-friendly online platform.",
-    solution: "Created a secure marketplace with user verification, product management, and seamless transactions.",
+  },
+];
+
+// ===== WORK EXPERIENCE =====
+
+export const experiences: Experience[] = [
+  {
+    id: 1,
+    category: "job",
+    role: "Full Stack Developer",
+    company: "PT. Senyum Media Utama",
+    location: "Indonesia",
+    period: "Feb 2026 – Present",
+    isCurrent: true,
+    description:
+      "Bertanggung jawab atas pengembangan dan pemeliharaan platform web serta aplikasi mobile perusahaan, berfokus pada frontend engineering, konsistensi antarmuka, dan integrasi backend.",
+    responsibilities: [
+      "Mengembangkan dan memelihara platform web serta aplikasi mobile perusahaan.",
+      "Mengembangkan antarmuka e-commerce responsif menggunakan Next.js, React, TypeScript, dan Tailwind CSS.",
+      "Membangun dan memelihara aplikasi mobile cross-platform menggunakan Flutter dan Dart.",
+      "Mengintegrasikan antarmuka dengan REST API untuk transaksi, autentikasi pelanggan, dan inventaris.",
+      "Mengimplementasikan reusable UI components dan pola state management yang konsisten.",
+      "Berkolaborasi dengan UI/UX designer, backend engineer, dan product management.",
+    ],
+  },
+  {
+    id: 2,
+    category: "internship",
+    role: "Frontend Web Developer Intern",
+    company: "PT. Central AI",
+    location: "Remote",
+    period: "2022 – 2023",
+    description:
+      "Berkontribusi dalam pengembangan website profil perusahaan dan web application klien berorientasi bisnis dan kecerdasan buatan.",
+    responsibilities: [
+      "Berkontribusi dalam pengembangan website perusahaan dan aplikasi web klien.",
+      "Mengembangkan modul aplikasi Point of Sale (POS) dan fitur Progressive Web Application (PWA).",
+      "Mengintegrasikan React.js dan Next.js dengan API berbasis Python dan Flask.",
+      "Mengoptimalkan performa halaman, transisi, dan kompatibilitas lintas browser.",
+    ],
   },
   {
     id: 3,
-    slug: "central-ai",
-    title: "Central AI",
+    category: "academic",
+    role: "Asisten Laboratorium Sistem Informasi Geografis",
+    company: "Fakultas Ilmu Komputer, Universitas Jember",
+    location: "Jember, Indonesia",
+    period: "2020 – 2021",
     description:
-      "A digital startup website providing AI-powered services for SMEs, companies, and organizations including chatbots, OCR, POS, and Notula.",
-    image: "/images/Project_3.png",
-    link: "https://centralai.my.id/",
-    category: "frontend",
-    techStack: ["React.js", "Next.js", "Flask", "Python", "Tailwind CSS"],
-    features: [
-      "AI-powered chatbot integration",
-      "OCR document processing",
-      "Company profile & services showcase",
-      "Modern responsive design",
+      "Membimbing mahasiswa sarjana dalam praktikum pemrosesan data spasial dan pemetaan digital berbasis SIG.",
+    responsibilities: [
+      "Membimbing mahasiswa dalam praktikum pengolahan data geospasial menggunakan QGIS.",
+      "Menyiapkan modul praktikum dan skenario pemetaan.",
+      "Menilai tugas teknis dan asistensi mingguan mahasiswa.",
+      "Membimbing pengerjaan proyek akhir praktikum.",
     ],
-    problem: "SMEs and organizations need affordable AI-powered tools to improve operational efficiency.",
-    solution: "Built a comprehensive platform showcasing AI products and enabling digital transformation for businesses.",
+  },
+];
+
+// ===== EDUCATION & BOOTCAMPS =====
+
+export const educationList: EducationItem[] = [
+  {
+    id: 1,
+    type: "degree",
+    title: "S1 Informatika / Bachelor of Informatics",
+    institution: "Universitas Jember",
+    period: "2019 – 2023",
+    location: "Jember, Indonesia",
+    achievement: "Cum Laude — IPK 3.74 / 4.00",
+    description:
+      "Lulusan sarjana informatika dengan fokus studi komprehensif pada rekayasa perangkat lunak, teknologi web, dan kecerdasan buatan.",
+    highlights: [
+      "Meraih predikat Cum Laude dengan IPK 3.74 / 4.00",
+      "Asisten Dosen Mata Kuliah Kecerdasan Buatan (Artificial Intelligence)",
+      "Fokus studi: Software Engineering, Web Technologies, Algorithms & Data Structures",
+    ],
+  },
+  {
+    id: 2,
+    type: "bootcamp",
+    title: "Full Stack Web Developer Bootcamp",
+    institution: "SIM-K HariSenin",
+    period: "2023 – 2024",
+    location: "Online",
+    description:
+      "Program pelatihan intensif rekayasa web menyeluruh dari arsitektur frontend hingga layanan backend dan deployment.",
+    highlights: [
+      "Full-stack architecture dan modern component engineering",
+      "Database management dan query optimization",
+      "REST API integration dan secure token authentication",
+      "Cloud deployment pipelines",
+    ],
+  },
+  {
+    id: 3,
+    type: "bootcamp",
+    title: "Frontend JavaScript Bootcamp",
+    institution: "Binar Academy",
+    period: "2022",
+    location: "Online",
+    description:
+      "Program pembelajaran intensif ekosistem JavaScript modern, React.js, dan kolaborasi tim tangkas (Agile/Scrum).",
+    highlights: [
+      "Penguasaan mendalam JavaScript (ES6+) dan React.js lifecycle",
+      "State management dan asynchronous API handling",
+      "Kolaborasi tim dalam sprint Agile/Scrum",
+    ],
+  },
+];
+
+// ===== ORGANIZATION & LEADERSHIP =====
+
+export const organizations: OrganizationItem[] = [
+  {
+    id: 1,
+    role: "Head of Public Relations Division",
+    organization: "HMIF Universitas Jember",
+    period: "2021 – 2022",
+    description:
+      "Memimpin divisi humas dalam membangun relasi eksternal himpunan, menjalin kemitraan dengan instansi dan organisasi luar, serta mengelola publikasi informasi resmi program studi.",
+    responsibilities: [
+      "Memimpin perencanaan dan eksekusi program kerja divisi humas selama satu periode kepengurusan.",
+      "Menjalin dan menjaga komunikasi formal dengan organisasi mahasiswa eksternal dan mitra institusi.",
+      "Mengelola publikasi media dan penyebaran informasi kegiatan mahasiswa informatika.",
+    ],
+  },
+  {
+    id: 2,
+    role: "Member of Public Relations Division",
+    organization: "HMIF Universitas Jember",
+    period: "2019 – 2021",
+    description:
+      "Terlibat aktif dalam komunikasi organisasi, penyelenggaraan seminar teknologi, dan publikasi kegiatan mahasiswa.",
+    responsibilities: [
+      "Mendukung publikasi acara akademik, seminar teknologi, dan workshop mahasiswa.",
+      "Berperan sebagai penghubung komunikasi antar departemen dan mahasiswa angkatan.",
+    ],
+  },
+];
+
+// ===== SERVICES (WHAT I BUILD) =====
+
+export const services: ServiceItem[] = [
+  {
+    id: 1,
+    title: "Web Application Development",
+    description:
+      "Membangun aplikasi web modern, cepat, dan responsif dengan arsitektur frontend yang terstruktur dan scalable.",
+    technologies: ["React", "Next.js", "Vue", "SvelteKit", "TypeScript"],
+    icon: "FiGlobe",
+  },
+  {
+    id: 2,
+    title: "Cross-Platform Mobile Apps",
+    description:
+      "Mengembangkan aplikasi mobile untuk Android dan iOS dari satu basis kode dengan performa native dan UI konsisten.",
+    technologies: ["Flutter", "Dart", "REST API", "Mobile UI"],
+    icon: "FiSmartphone",
+  },
+  {
+    id: 3,
+    title: "Desktop Application Development",
+    description:
+      "Eksplorasi dan pengembangan aplikasi desktop lintas sistem operasi (Windows, macOS, Linux) yang efisien.",
+    technologies: ["Electron", "Tauri", "Web Technologies"],
+    icon: "FiMonitor",
   },
   {
     id: 4,
-    slug: "green-care-blitz",
-    title: "Green Care Blitz",
+    title: "UI/UX Engineering & Design Systems",
     description:
-      "A website template designed with a modern and responsive appearance, ready to use for creating professional websites.",
-    image: "/images/Project_4.png",
-    link: "https://green-care-blitz.netlify.app/",
-    category: "frontend",
-    techStack: ["HTML", "CSS", "JavaScript"],
-    features: [
-      "Modern responsive layout",
-      "Clean UI components",
-      "Cross-browser compatibility",
-      "Template-ready structure",
-    ],
+      "Merancang antarmuka pengguna yang konsisten, komponen modular yang reusable, dan interaksi yang intuitif.",
+    technologies: ["Tailwind CSS", "shadcn/ui", "Framer Motion", "Figma"],
+    icon: "FiLayout",
   },
   {
     id: 5,
-    slug: "pos-central-ai",
-    title: "POS | Central AI",
+    title: "API & Backend Service Integration",
     description:
-      "A website to help users record point of sale transactions comprehensively, provided for free without time limits.",
-    image: "/images/Project_5.png",
-    link: "#",
-    category: "frontend",
-    techStack: ["React.js", "Next.js", "Tailwind CSS", "REST API"],
-    features: [
-      "Transaction recording",
-      "Sales analytics",
-      "Inventory management",
-      "Free unlimited usage",
-    ],
-    problem: "Small business operators need an affordable and simple way to manage their sales transactions.",
-    solution: "Developed a free-to-use POS system with comprehensive transaction recording and reporting features.",
+      "Menghubungkan antarmuka pengguna dengan backend API, otentikasi data, database, dan platform cloud services.",
+    technologies: ["REST APIs", "Python", "Flask", "Supabase", "Firebase"],
+    icon: "FiServer",
   },
   {
     id: 6,
-    slug: "pwa-central-ai",
-    title: "PWA | Central AI",
+    title: "Code Management & CI/CD",
     description:
-      "The Progressive Web App version of Central AI, optimized for responsive and lightweight user experience on mobile devices.",
-    image: "/images/Project_6.png",
-    link: "#",
-    category: "frontend",
-    techStack: ["React.js", "PWA", "Tailwind CSS", "Service Workers"],
-    features: [
-      "Offline functionality",
-      "Mobile-optimized design",
-      "Fast loading times",
-      "Installable on devices",
-    ],
+      "Manajemen source code yang rapi, branch workflow terstandarisasi, dan otomatisasi deployment ke platform cloud.",
+    technologies: ["Git", "GitHub", "GitLab", "Vercel", "Netlify"],
+    icon: "FiGitBranch",
   },
-  {
-    id: 7,
-    slug: "lms-yapendik",
-    title: "LMS Yapendik",
-    description:
-      "A web-based Learning Management System supporting digital teaching and learning activities for schools under the Yapendik foundation.",
-    image: "/images/Project_7.png",
-    link: "#",
-    category: "frontend",
-    techStack: ["React.js", "Next.js", "Tailwind CSS", "REST API"],
-    features: [
-      "Material delivery system",
-      "Assignment submission",
-      "Online testing platform",
-      "Teacher-student communication",
-    ],
-    problem: "Schools need a structured digital platform for managing the learning process efficiently.",
-    solution: "Built a comprehensive LMS enabling material delivery, assignment management, and online assessments.",
-  },
-  {
-    id: 8,
-    slug: "liosa-cosplay",
-    title: "Liosa Cosplay",
-    description:
-      "A website containing information about cosplayers and the purchase of cosplay items, built as a bootcamp final project.",
-    image: "/images/Project_8.png",
-    link: "#",
-    category: "frontend",
-    techStack: ["HTML", "CSS", "JavaScript", "Bootstrap"],
-    features: [
-      "Cosplayer profiles",
-      "Item catalog & shop",
-      "Responsive gallery",
-      "Modern UI design",
-    ],
-  },
-  {
-  id: 9,
-  slug: "toko-senyum-web",
-  title: "Toko Senyum Web Platform",
-  description:
-    "A modern e-commerce platform that enables customers to browse, search, and purchase products online with an intuitive shopping experience.",
-  longDescription:
-    "Toko Senyum Web Platform is a comprehensive e-commerce solution developed to support online shopping activities for customers across Indonesia. The platform provides product discovery, cart management, secure checkout, customer authentication, and promotional features. It is designed with responsive layouts and optimized performance to deliver a seamless shopping experience across desktop and mobile browsers.",
-  image: "/images/Project_9.png",
-  link: "https://tokosenyum.com/",
-  category: "frontend",
-  techStack: [
-    "Next.js",
-    "React.js",
-    "TypeScript",
-    "Tailwind CSS",
-    "REST API",
-  ],
-  features: [
-    "Product catalog and search",
-    "Category and brand filtering",
-    "Shopping cart management",
-    "Customer authentication",
-    "Promotion and discount system",
-    "Responsive design",
-    "Order checkout process",
-    "Real-time product information",
-  ],
-  problem:
-    "Customers need a fast and convenient way to purchase products online without visiting physical stores.",
-  solution:
-    "Developed a responsive e-commerce platform that simplifies product discovery, ordering, and customer interactions while providing a smooth shopping experience.",
-},
-{
-  id: 10,
-  slug: "toko-senyum-mobile",
-  title: "Toko Senyum Mobile App",
-  description:
-    "A cross-platform mobile commerce application that allows customers to shop, track orders, access promotions, and manage their accounts directly from Android and iOS devices.",
-  longDescription:
-    "Toko Senyum Mobile App is a mobile-first e-commerce application developed for Android and iOS platforms. The application focuses on delivering a fast, user-friendly, and engaging shopping experience through optimized mobile interfaces, authentication via phone number or email, promotional campaigns, and integrated ordering processes. The app is designed to support scalability and long-term business growth.",
-  image: "/images/Project_10.jpeg",
-  link: "#",
-  category: "mobile",
-  techStack: [
-    "Flutter",
-    "Dart",
-    "REST API",
-    "Firebase",
-    "Bloc",
-    "Android",
-    "iOS"
-  ],
-  features: [
-    "Phone number and email login",
-    "OTP authentication",
-    "Product browsing and search",
-    "Promotion and voucher system",
-    "Shopping cart",
-    "Order management",
-    "Push notifications",
-    "Cross-platform Android & iOS support",
-  ],
-  problem:
-    "Customers require a faster and more accessible shopping experience directly from their smartphones.",
-  solution:
-    "Built a cross-platform mobile application that enables users to browse products, receive promotions, place orders, and manage their accounts conveniently from mobile devices.",
-},
 ];
 
-// ===== SKILLS =====
-
-export const skills: Skill[] = [
-  // ===== Languages =====
-  { name: "HTML", icon: "SiHtml5", category: "frontend" },
-  { name: "CSS", icon: "SiCss", category: "frontend" },
-  { name: "JavaScript", icon: "SiJavascript", category: "frontend" },
-  { name: "TypeScript", icon: "SiTypescript", category: "frontend" },
-  { name: "Python", icon: "SiPython", category: "frontend" },
-  { name: "PHP", icon: "SiPhp", category: "frontend" },
-  { name: "Dart", icon: "SiDart", category: "mobile" },
-
-  // ===== Frameworks & Libraries =====
-  { name: "React", icon: "SiReact", category: "frontend" },
-  { name: "Next.js", icon: "SiNextdotjs", category: "frontend" },
-  { name: "Vue", icon: "SiVuedotjs", category: "frontend" },
-  { name: "Flutter", icon: "SiFlutter", category: "mobile" },
-  { name: "Laravel", icon: "SiLaravel", category: "frontend" },
-  { name: "Flask", icon: "SiFlask", category: "frontend" },
-  { name: "Tailwind CSS", icon: "SiTailwindcss", category: "frontend" },
-  { name: "Bootstrap", icon: "SiBootstrap", category: "frontend" },
-  { name: "MUI", icon: "SiMui", category: "frontend" },
-  { name: "Shadcn UI", icon: "SiShadcnui", category: "frontend" },
-  { name: "Flowbite", icon: "SiTailwindcss", category: "frontend" },
-  { name: "Redux", icon: "SiRedux", category: "frontend" },
-  { name: "Riverpod", icon: "SiDart", category: "mobile" },
-  { name: "Provider", icon: "SiFlutter", category: "mobile" },
-  { name: "Lottie", icon: "SiLottiefiles", category: "frontend" },
-  { name: "Lucide", icon: "SiLucide", category: "frontend" },
-  { name: "Font Awesome", icon: "FaFontAwesome", category: "frontend" },
-
-  // ===== Tools =====
-  { name: "Git", icon: "SiGit", category: "tools" },
-  { name: "GitHub", icon: "SiGithub", category: "tools" },
-  { name: "GitLab", icon: "SiGitlab", category: "tools" },
-  { name: "Docker", icon: "SiDocker", category: "tools" },
-  { name: "Postman", icon: "SiPostman", category: "tools" },
-  { name: "Laragon", icon: "SiLaragon", category: "tools" },
-  { name: "Vercel", icon: "SiVercel", category: "tools" },
-  { name: "Netlify", icon: "SiNetlify", category: "tools" },
-  { name: "Figma", icon: "SiFigma", category: "tools" },
-  { name: "VS Code", icon: "VscVscode", category: "tools" },
-];
-
-// ===== CERTIFICATES =====
+// ===== CERTIFICATES ARCHIVE =====
 
 export const certificates: Certificate[] = [
   {
     id: 1,
-    title: "Assistant Lecturer in Geographic Information Systems Laboratory",
-    issuer: "University of Jember",
-    year: "2020 - 2021",
-    description: "Proof of experience as a teaching assistant in the Geographic Information System Laboratory.",
-    image: "/images/certificate.jpg",
+    title: "Cum Laude Honors Award",
+    issuer: "Universitas Jember",
+    year: "2023",
+    description:
+      "Piagam penghargaan kelulusan sarjana dengan predikat pujian (Cum Laude, IPK 3.74).",
+    image: "/images/certificate_9.jpg",
   },
   {
     id: 2,
-    title: "Laboratory Assistant in Geographic Information System",
-    issuer: "University of Jember",
-    year: "2020 - 2021",
-    description: "Proof of experience as an assistant in the Geographic Information System Laboratory.",
-    image: "/images/certificate_2.jpg",
+    title: "Full Stack Web Developer",
+    issuer: "Binar Academy",
+    year: "2023",
+    description:
+      "Sertifikat kelulusan program intensif Full Stack Web Developer.",
+    image: "/images/certificate_8.jpg",
   },
   {
     id: 3,
-    title: "Member of the Public Relations Division",
-    issuer: "HMIF University of Jember",
-    year: "2019 - 2020",
-    description: "Proof of having served as a member of the public relations division.",
-    image: "/images/certificate_3.jpg",
+    title: "Front End JavaScript Wave 2",
+    issuer: "Binar Academy",
+    year: "2022",
+    description:
+      "Sertifikat kelulusan program intensif Frontend Web Development dengan React dan modern JS.",
+    image: "/images/certificate_7.png",
   },
   {
     id: 4,
-    title: "Member of the Public Relations Division",
-    issuer: "HMIF University of Jember",
-    year: "2020 - 2021",
-    description: "Proof of having served as a member of the public relations division.",
-    image: "/images/certificate_4.jpg",
+    title: "MSIB Internship Batch 3",
+    issuer: "PT. Central AI",
+    year: "2022",
+    description:
+      "Sertifikat program magang bersertifikat Kemendikbudristek di PT Central AI.",
+    image: "/images/certificate_6.jpg",
   },
   {
     id: 5,
-    title: "Head of the Public Relations Division",
-    issuer: "HMIF University of Jember",
-    year: "2021 - 2022",
-    description: "Evidence of having served as the head of the public relations division.",
+    title: "Head of Public Relations Division",
+    issuer: "HMIF Universitas Jember",
+    year: "2021 – 2022",
+    description:
+      "Sertifikat pengabdian kepemimpinan sebagai Ketua Divisi Hubungan Masyarakat.",
     image: "/images/certificate_5.jpg",
   },
   {
     id: 6,
-    title: "MSIB Participants Batch 3",
-    issuer: "PT Central AI",
-    year: "2022",
-    description: "Proof of having completed the internship at PT. Central AI.",
-    image: "/images/certificate_6.jpg",
+    title: "Member of Public Relations Division",
+    issuer: "HMIF Universitas Jember",
+    year: "2020 – 2021",
+    description:
+      "Sertifikat pengabdian keanggotaan Divisi Humas HMIF UNEJ.",
+    image: "/images/certificate_4.jpg",
   },
   {
     id: 7,
-    title: "Front End JavaScript Wave 2",
-    issuer: "Binar Academy",
-    year: "2022",
-    description: "Proof of having completed the JavaScript learning activities.",
-    image: "/images/certificate_7.png",
+    title: "Member of Public Relations Division",
+    issuer: "HMIF Universitas Jember",
+    year: "2019 – 2020",
+    description:
+      "Sertifikat keaktifan divisi humas dalam organisasi kemahasiswaan.",
+    image: "/images/certificate_3.jpg",
   },
   {
     id: 8,
-    title: "Full Stack Web Developer",
-    issuer: "Binar Academy",
-    year: "2023",
-    description: "Proof of completion of Full Stack Web Developer learning activities.",
-    image: "/images/certificate_8.jpg",
+    title: "Laboratory Assistant in Geographic Information System",
+    issuer: "Universitas Jember",
+    year: "2020 – 2021",
+    description:
+      "Sertifikat pengalaman sebagai asisten laboratorium SIG.",
+    image: "/images/certificate_2.jpg",
   },
   {
     id: 9,
-    title: "Cum Laude",
-    issuer: "University of Jember",
-    year: "2023",
-    description: "Evidence of a student with outstanding achievements with honors.",
-    image: "/images/certificate_9.jpg",
-  },
-  {
-    id: 10,
-    title: "ICOMITEE 2021",
-    issuer: "University of Jember",
-    year: "2021",
-    description: "Proof of participation in the ICOMITEE 2021 launching event.",
-    image: "/images/certificate_10.png",
-  },
-  {
-    id: 11,
-    title: "TOEFL Preparation",
-    issuer: "University of Jember",
-    year: "2020",
-    description: "Proof of having completed the preparation class for one month.",
-    image: "/images/certificate_11.png",
+    title: "Assistant Lecturer in GIS Laboratory",
+    issuer: "Universitas Jember",
+    year: "2020 – 2021",
+    description:
+      "Sertifikat pengalaman asisten dosen praktikum SIG.",
+    image: "/images/certificate_1.jpg",
   },
 ];
