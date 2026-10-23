@@ -6,10 +6,28 @@ import Image from "next/image";
 import { certificates } from "@/lib/data";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Lightbox } from "@/components/ui/lightbox";
+import { Flip } from "@/lib/gsap";
 import { FiMaximize2, FiCalendar } from "react-icons/fi";
 
 export function Certificates() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [lightboxData, setLightboxData] = useState<{
+    src: string;
+    alt: string;
+    flipState: Flip.FlipState | null;
+  } | null>(null);
+
+  const handleCardClick = (
+    e: React.MouseEvent<HTMLDivElement>,
+    cert: (typeof certificates)[0]
+  ) => {
+    const thumb = e.currentTarget.querySelector(".cert-image-thumb");
+    const state = thumb ? Flip.getState(thumb) : null;
+    setLightboxData({
+      src: cert.image,
+      alt: cert.title,
+      flipState: state,
+    });
+  };
 
   return (
     <section id="certificates" className="section-padding">
@@ -29,11 +47,11 @@ export function Certificates() {
               viewport={{ once: true, margin: "-40px" }}
               transition={{ delay: idx * 0.05, duration: 0.4 }}
               whileHover={{ y: -4 }}
-              onClick={() => setSelectedImage(cert.image)}
+              onClick={(e) => handleCardClick(e, cert)}
               className="group rounded-2xl border border-border bg-surface overflow-hidden shadow-xs hover:border-border-hover hover:shadow-md transition-all cursor-pointer flex flex-col justify-between"
             >
-              {/* Image Preview Container */}
-              <div className="relative aspect-16/10 w-full overflow-hidden bg-background-secondary border-b border-border">
+              {/* Image Preview Container (Target for FLIP getState) */}
+              <div className="cert-image-thumb relative aspect-16/10 w-full overflow-hidden bg-background-secondary border-b border-border">
                 <Image
                   src={cert.image}
                   alt={cert.title}
@@ -46,7 +64,7 @@ export function Certificates() {
                     <FiMaximize2 className="w-4 h-4" />
                   </span>
                 </div>
-                <div className="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-md bg-(--surface)/90 backdrop-blur-xs border border-border text-[11px] font-medium text-text-secondary flex items-center gap-1 shadow-2xs">
+                <div className="absolute top-2.5 right-2.5 px-2.5 py-0.5 rounded-md bg-surface/90 backdrop-blur-xs border border-border text-[11px] font-medium text-text-secondary flex items-center gap-1 shadow-2xs">
                   <FiCalendar className="w-3 h-3 text-accent" />
                   <span>{cert.year}</span>
                 </div>
@@ -71,13 +89,14 @@ export function Certificates() {
         </div>
       </div>
 
-      {/* Lightbox Preview */}
+      {/* Lightbox Preview with Continuous FLIP Expansion */}
       <AnimatePresence>
-        {selectedImage && (
+        {lightboxData && (
           <Lightbox
-            src={selectedImage}
-            alt="Certificate Preview"
-            onClose={() => setSelectedImage(null)}
+            src={lightboxData.src}
+            alt={lightboxData.alt}
+            flipState={lightboxData.flipState}
+            onClose={() => setLightboxData(null)}
           />
         )}
       </AnimatePresence>

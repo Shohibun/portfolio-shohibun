@@ -251,7 +251,7 @@ export const experiences: Experience[] = [
     id: 1,
     category: "job",
     role: "Full Stack Developer",
-    company: "PT. Senyum Media Utama",
+    company: "Senyum Media Group",
     location: "Indonesia",
     period: "Feb 2026 – Present",
     isCurrent: true,

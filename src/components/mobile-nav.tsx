@@ -1,10 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { navItems, socialLinks, personalInfo } from "@/lib/data";
 import { FiX, FiGithub, FiLinkedin, FiInstagram, FiGitlab, FiDownload } from "react-icons/fi";
 import { ThemeToggle } from "./ui/theme-toggle";
+import { gsap, useGSAP } from "@/lib/gsap";
 
 const iconMap: Record<string, React.ElementType> = {
   FiGithub,
@@ -14,34 +15,75 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 interface MobileNavProps {
+  isOpen: boolean;
   activeSection: string;
   onClose: () => void;
 }
 
-export function MobileNav({ activeSection, onClose }: MobileNavProps) {
+export function MobileNav({ isOpen, activeSection, onClose }: MobileNavProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const timelineRef = useRef<gsap.core.Timeline | null>(null);
+
+  useGSAP(() => {
+    // Set initial non-interactive state
+    gsap.set(containerRef.current, { display: "none", pointerEvents: "none" });
+
+    // Build the interruptible master timeline
+    const tl = gsap.timeline({
+      paused: true,
+      reversed: true,
+      onStart: () => {
+        gsap.set(containerRef.current, { display: "block", pointerEvents: "auto" });
+      },
+      onReverseComplete: () => {
+        gsap.set(containerRef.current, { display: "none", pointerEvents: "none" });
+      },
+    });
+
+    tl.fromTo(
+      ".mobile-backdrop",
+      { opacity: 0 },
+      { opacity: 1, duration: 0.3, ease: "power2.out" }
+    )
+      .fromTo(
+        ".mobile-drawer",
+        { x: "100%" },
+        { x: "0%", duration: 0.45, ease: "power3.inOut" },
+        "-=0.2"
+      )
+      .fromTo(
+        ".mobile-nav-link",
+        { x: 24, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.28, stagger: 0.035, ease: "power2.out" },
+        "-=0.2"
+      );
+
+    timelineRef.current = tl;
+  }, { scope: containerRef });
+
+  useEffect(() => {
+    if (!timelineRef.current) return;
+    if (isOpen) {
+      timelineRef.current.timeScale(1).play();
+    } else {
+      timelineRef.current.timeScale(1.4).reverse();
+    }
+  }, [isOpen]);
+
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+    <div
+      ref={containerRef}
       className="fixed inset-0 z-50 md:hidden"
     >
       {/* Backdrop */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="absolute inset-0 bg-black/50 backdrop-blur-xs"
+      <div
+        className="mobile-backdrop absolute inset-0 bg-black/50 backdrop-blur-xs"
         onClick={onClose}
       />
 
       {/* Drawer Panel */}
-      <motion.nav
-        initial={{ x: "100%" }}
-        animate={{ x: 0 }}
-        exit={{ x: "100%" }}
-        transition={{ type: "spring", damping: 26, stiffness: 220 }}
-        className="absolute right-0 top-0 bottom-0 w-[80%] max-w-sm bg-surface border-l border-border shadow-2xl flex flex-col justify-between"
+      <nav
+        className="mobile-drawer absolute right-0 top-0 bottom-0 w-[82%] max-w-sm bg-surface border-l border-border shadow-2xl flex flex-col justify-between"
       >
         {/* Top Header */}
         <div className="flex justify-between items-center px-6 py-5 border-b border-border">
@@ -73,18 +115,15 @@ export function MobileNav({ activeSection, onClose }: MobileNavProps) {
 
         {/* Navigation Links */}
         <div className="flex-1 overflow-y-auto px-6 py-6 flex flex-col gap-1.5">
-          {navItems.map((item, i) => {
+          {navItems.map((item) => {
             const sectionId = item.href.replace("#", "");
             const isActive = activeSection === sectionId;
             return (
-              <motion.a
+              <a
                 key={item.href}
                 href={item.href}
                 onClick={onClose}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.04 * i }}
-                className={`flex items-center justify-between px-3.5 py-3 rounded-lg text-sm font-medium transition-colors ${
+                className={`mobile-nav-link flex items-center justify-between px-3.5 py-3 rounded-lg text-sm font-medium transition-colors ${
                   isActive
                     ? "bg-accent-subtle text-accent font-semibold"
                     : "text-text-secondary hover:text-text-primary hover:bg-background-secondary"
@@ -92,7 +131,7 @@ export function MobileNav({ activeSection, onClose }: MobileNavProps) {
               >
                 <span>{item.label}</span>
                 {isActive && <span className="w-1.5 h-1.5 rounded-full bg-accent" />}
-              </motion.a>
+              </a>
             );
           })}
 
@@ -129,7 +168,7 @@ export function MobileNav({ activeSection, onClose }: MobileNavProps) {
             })}
           </div>
         </div>
-      </motion.nav>
-    </motion.div>
+      </nav>
+    </div>
   );
 }

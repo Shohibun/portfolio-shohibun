@@ -1,58 +1,102 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { personalInfo } from "@/lib/data";
-
-const STATUS_LOGS = [
-  "INITIALIZING SYSTEM ARCHITECTURE...",
-  "LOADING CORE DESIGN TOKENS...",
-  "CONFIGURING MULTIPLATFORM RUNTIMES...",
-  "ESTABLISHING SECURE CONNECTION...",
-  "SYSTEM DEPLOYED. WELCOME.",
-];
+import { gsap, useGSAP } from "@/lib/gsap";
+import { interpolate } from "flubber";
 
 export function SplashScreen() {
   const [progress, setProgress] = useState(0);
   const [isDone, setIsDone] = useState(false);
-  const [statusIndex, setStatusIndex] = useState(0);
+  const splashContainerRef = useRef<HTMLDivElement>(null);
+  const pathRef = useRef<SVGPathElement>(null);
 
   const handleFinish = useCallback(() => {
     setIsDone(true);
   }, []);
 
+  // SVG Path Morphing with Flubber + GSAP Engine
+  useGSAP(() => {
+    const pathEl = pathRef.current;
+    if (!pathEl) return;
+
+    // Organic closed SVG shapes
+    const shapeSquircle =
+      "M50,10 C74,10 90,26 90,50 C90,74 74,90 50,90 C26,90 10,74 10,50 C10,26 26,10 50,10 Z";
+    const shapeFluidBlob =
+      "M50,6 C78,10 94,30 90,58 C86,84 66,94 44,90 C22,86 8,68 10,40 C12,18 24,4 50,6 Z";
+    const shapeHexagon =
+      "M50,10 L88,32 L88,68 L50,90 L12,68 L12,32 Z";
+
+    const interpolator1 = interpolate(shapeSquircle, shapeFluidBlob, {
+      maxSegmentLength: 2,
+    });
+    const interpolator2 = interpolate(shapeFluidBlob, shapeHexagon, {
+      maxSegmentLength: 2,
+    });
+    const interpolator3 = interpolate(shapeHexagon, shapeSquircle, {
+      maxSegmentLength: 2,
+    });
+
+    const proxy = { val1: 0, val2: 0, val3: 0 };
+
+    const morphTl = gsap.timeline({ repeat: -1 });
+
+    morphTl
+      .to(proxy, {
+        val1: 1,
+        duration: 2.2,
+        ease: "sine.inOut",
+        onUpdate: () => {
+          pathEl.setAttribute("d", interpolator1(proxy.val1));
+        },
+      })
+      .to(proxy, {
+        val2: 1,
+        duration: 2.2,
+        ease: "sine.inOut",
+        onUpdate: () => {
+          pathEl.setAttribute("d", interpolator2(proxy.val2));
+        },
+      })
+      .to(proxy, {
+        val3: 1,
+        duration: 2.2,
+        ease: "sine.inOut",
+        onUpdate: () => {
+          pathEl.setAttribute("d", interpolator3(proxy.val3));
+        },
+      });
+
+    return () => {
+      morphTl.kill();
+    };
+  }, { scope: splashContainerRef });
+
   useEffect(() => {
-    // Prevent scrolling while splash screen is active
+    // Prevent scrolling while splash is active
     document.body.style.overflow = "hidden";
 
-    // Progress counter animation from 0 to 100
     const startTime = Date.now();
-    const duration = 2100; // 2.1 seconds for an optimal cinematic experience
+    const duration = 1800; // 1.8s for a snappy, premium feel
 
     const interval = setInterval(() => {
       const elapsed = Date.now() - startTime;
       const current = Math.min(100, Math.floor((elapsed / duration) * 100));
       setProgress(current);
 
-      // Advance status log based on milestones
-      if (current >= 85) setStatusIndex(4);
-      else if (current >= 60) setStatusIndex(3);
-      else if (current >= 38) setStatusIndex(2);
-      else if (current >= 15) setStatusIndex(1);
-      else setStatusIndex(0);
-
       if (current >= 100) {
         clearInterval(interval);
         setTimeout(() => {
           handleFinish();
-        }, 280);
+        }, 200);
       }
-    }, 24);
+    }, 20);
 
-    // Keyboard shortcut to skip (ESC or Space)
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" || e.key === " ") {
+      if (e.key === "Escape" || e.key === " " || e.key === "Enter") {
         handleFinish();
       }
     };
@@ -75,196 +119,127 @@ export function SplashScreen() {
     <AnimatePresence>
       {!isDone && (
         <motion.div
+          ref={splashContainerRef}
           key="splash-screen"
           initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
-            scale: 1.04,
-            filter: "blur(14px)",
+            scale: 1.02,
+            filter: "blur(8px)",
             transition: {
-              duration: 0.7,
-              ease: [0.76, 0, 0.24, 1],
+              duration: 0.6,
+              ease: [0.16, 1, 0.3, 1],
             },
           }}
-          className="fixed inset-0 z-100 flex flex-col items-center justify-between select-none bg-[#090B10] text-[#F8FAFC] overflow-hidden"
+          onClick={handleFinish}
+          className="fixed inset-0 z-100 flex flex-col items-center justify-center select-none bg-[#08090D] text-[#F8FAFC] cursor-pointer"
           role="dialog"
           aria-label="Loading portfolio"
           aria-live="polite"
         >
-          {/* Ambient Radiant Glow Background Orbs */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+          {/* Subtle Ambient Radial Glow */}
+          <div
+            className="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden"
+            aria-hidden="true"
+          >
             <motion.div
               animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.25, 0.45, 0.25],
+                scale: [1, 1.15, 1],
+                opacity: [0.18, 0.3, 0.18],
               }}
               transition={{
-                duration: 4,
+                duration: 3.5,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-indigo-600/30 via-accent/20 to-cyan-500/25 blur-[120px]"
-            />
-            {/* Tech grid mask */}
-            <div
-              className="absolute inset-0 opacity-[0.18]"
-              style={{
-                backgroundImage:
-                  "linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px)",
-                backgroundSize: "40px 40px",
-                maskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
-                WebkitMaskImage: "radial-gradient(ellipse at center, black 40%, transparent 80%)",
-              }}
+              className="w-100 h-100 sm:w-125 sm:h-125 rounded-full bg-linear-to-tr from-indigo-500/20 via-accent/15 to-cyan-400/20 blur-[100px]"
             />
           </div>
 
-          {/* Top HUD Bar */}
-          <header className="relative z-10 w-full max-w-6xl mx-auto px-6 py-6 flex items-center justify-between font-mono text-[11px] text-slate-400">
-            <div className="flex items-center gap-2.5">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-              </span>
-              <span className="tracking-wider uppercase font-medium text-slate-300">
-                SYS_ONLINE // V2.6
-              </span>
-            </div>
-
-            <div className="hidden sm:flex items-center gap-4 text-slate-500 text-[10px] tracking-widest uppercase">
-              <span>LAT: -8.1724° S</span>
-              <span>•</span>
-              <span>LON: 113.7007° E</span>
-              <span>•</span>
-              <span className="text-accent font-semibold">JEMBER, ID</span>
-            </div>
-
-            <button
-              type="button"
-              onClick={handleFinish}
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-slate-800 bg-slate-900/60 hover:bg-slate-800 text-slate-400 hover:text-white transition-colors cursor-pointer text-[10px] tracking-wider uppercase font-mono"
-            >
-              <span>SKIP</span>
-              <kbd className="px-1 py-0.5 rounded bg-slate-800 border border-slate-700 text-[9px]">ESC</kbd>
-            </button>
-          </header>
-
-          {/* Centerpiece: Emblem, HUD Ring & Brand Reveal */}
-          <main className="relative z-10 flex flex-col items-center justify-center my-auto px-6">
-            {/* Animated Logo Container with Concentric Radar Rings */}
-            <div className="relative flex items-center justify-center mb-8">
-              {/* Outer Orbiting Segmented Ring */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
-                className="absolute w-36 h-36 sm:w-44 sm:h-44 rounded-full border border-dashed border-indigo-400/30"
-              />
-
-              {/* Reverse Rotating Thin Accent Ring */}
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-                className="absolute w-44 h-44 sm:w-52 sm:h-52 rounded-full border border-cyan-400/20"
-              />
-
-              {/* Pulsing Glow Ring */}
-              <motion.div
-                animate={{
-                  scale: [0.95, 1.08, 0.95],
-                  opacity: [0.35, 0.7, 0.35],
-                }}
-                transition={{
-                  duration: 2.4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute w-28 h-28 sm:w-32 sm:h-32 rounded-3xl bg-indigo-500/25 blur-xl"
-              />
-
-              {/* Central Logo Box */}
-              <motion.div
-                initial={{ scale: 0.6, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-slate-900/90 border border-indigo-500/40 shadow-[0_0_40px_rgba(79,70,229,0.35)] p-3 flex items-center justify-center backdrop-blur-md"
+          {/* Central Minimalist Card with SVG Shape Morphing */}
+          <div className="relative z-10 flex flex-col items-center px-6">
+            {/* SVG Morphing Emblem Frame */}
+            <div className="relative w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center mb-4">
+              <svg
+                viewBox="0 0 100 100"
+                className="absolute inset-0 w-full h-full filter drop-shadow-[0_0_16px_rgba(129,140,248,0.35)]"
+                aria-hidden="true"
               >
-                <div className="relative w-full h-full">
-                  <Image
-                    src={personalInfo.logo}
-                    alt={personalInfo.name}
-                    fill
-                    sizes="(max-width: 640px) 80px, 96px"
-                    className="object-contain drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
-                    priority
-                  />
-                </div>
-              </motion.div>
+                <defs>
+                  <linearGradient
+                    id="splash-morph-gradient"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="100%"
+                  >
+                    <stop offset="0%" stopColor="#818CF8" />
+                    <stop offset="50%" stopColor="#38BDF8" />
+                    <stop offset="100%" stopColor="#4F46E5" />
+                  </linearGradient>
+                </defs>
+                <path
+                  ref={pathRef}
+                  d="M50,10 C74,10 90,26 90,50 C90,74 74,90 50,90 C26,90 10,74 10,50 C10,26 26,10 50,10 Z"
+                  fill="url(#splash-morph-gradient)"
+                  fillOpacity="0.08"
+                  stroke="url(#splash-morph-gradient)"
+                  strokeWidth="1.8"
+                />
+              </svg>
+
+              {/* Logo Emblem inside the morphing silhouette */}
+              <div className="relative w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center">
+                <Image
+                  src={personalInfo.logo}
+                  alt={personalInfo.name}
+                  fill
+                  sizes="64px"
+                  className="object-contain"
+                  priority
+                />
+              </div>
             </div>
 
-            {/* Name & Headline with Reveal Motion */}
+            {/* Typography */}
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25, duration: 0.5 }}
+              transition={{ delay: 0.15, duration: 0.4 }}
               className="text-center"
             >
-              <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-white font-sans">
+              <h1 className="text-lg sm:text-xl font-bold tracking-tight text-white font-sans">
                 Shohibun Najam Ilma
               </h1>
-              <p className="mt-1.5 text-xs sm:text-sm font-mono tracking-widest text-indigo-300/80 uppercase">
-                Software Developer // Portfolio
+              <p className="mt-1 text-xs font-mono tracking-widest text-slate-400 uppercase">
+                Software Developer
               </p>
             </motion.div>
 
-            {/* Progress Percentage Display */}
-            <div className="mt-8 flex items-baseline gap-1 font-mono">
-              <span className="text-4xl sm:text-5xl font-black tracking-tight text-white tabular-nums">
-                {String(progress).padStart(2, "0")}
-              </span>
-              <span className="text-sm font-semibold text-accent">%</span>
-            </div>
+            {/* Delicate Progress Track */}
+            <div className="mt-8 flex flex-col items-center gap-2.5">
+              <div className="w-48 sm:w-56 h-0.5 bg-white/10 rounded-full overflow-hidden relative">
+                <motion.div
+                  className="h-full bg-linear-to-r from-accent via-indigo-400 to-cyan-400 rounded-full"
+                  style={{ width: `${progress}%` }}
+                  transition={{ ease: "easeOut" }}
+                />
+              </div>
 
-            {/* Futuristic Gradient Progress Track */}
-            <div className="mt-4 w-60 sm:w-72 h-1.5 rounded-full bg-slate-800/80 overflow-hidden p-0.5 border border-slate-700/60 shadow-inner">
-              <motion.div
-                className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-indigo-500 to-indigo-300 relative"
-                style={{ width: `${progress}%` }}
-                transition={{ ease: "easeOut" }}
-              >
-                {/* Glowing Leading Head */}
-                <span className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-white shadow-[0_0_8px_#ffffff]" />
-              </motion.div>
-            </div>
-
-            {/* Typewriter Status Message */}
-            <div className="mt-5 h-5 flex items-center justify-center font-mono text-[11px] text-slate-400 tracking-wider">
-              <span className="text-accent font-semibold mr-1.5">&gt;</span>
-              <span className="uppercase">{STATUS_LOGS[statusIndex]}</span>
-              <motion.span
-                animate={{ opacity: [0, 1, 0] }}
-                transition={{ duration: 0.8, repeat: Infinity }}
-                className="inline-block w-1.5 h-3 bg-indigo-400 ml-1"
-              />
-            </div>
-          </main>
-
-          {/* Bottom Footer Info Bar */}
-          <footer className="relative z-10 w-full max-w-6xl mx-auto px-6 py-5 flex items-center justify-between font-mono text-[10px] text-slate-500 border-t border-slate-900/60">
-            <div className="flex items-center gap-3">
-              <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-400">
-                NEXT.JS 16
-              </span>
-              <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-400">
-                REACT 19
-              </span>
-              <span className="hidden sm:inline-block px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-400">
-                TAILWIND 4
+              <span className="font-mono text-xs text-slate-500 tabular-nums">
+                {progress}%
               </span>
             </div>
+          </div>
 
-            <div className="text-right tracking-widest uppercase">
-              <span>INITIALIZING DIGITAL EXPERIENCE</span>
-            </div>
-          </footer>
+          {/* Minimalist Hint at Bottom */}
+          <div className="absolute bottom-6 font-mono text-[11px] text-slate-600 tracking-wider">
+            Press{" "}
+            <kbd className="px-1 py-0.5 rounded bg-slate-900 border border-slate-800 text-[10px] text-slate-500">
+              ESC
+            </kbd>{" "}
+            or click to enter
+          </div>
         </motion.div>
       )}
     </AnimatePresence>

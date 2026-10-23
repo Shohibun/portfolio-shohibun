@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { personalInfo, socialLinks } from "@/lib/data";
+import { gsap, useGSAP } from "@/lib/gsap";
 import {
-  FiArrowRight,
   FiDownload,
   FiMail,
   FiGithub,
@@ -25,7 +25,7 @@ import {
   SiTypescript,
   SiFlutter,
   SiTailwindcss,
-  SiPython,
+  SiTauri,
 } from "react-icons/si";
 
 const socialIconMap: Record<string, React.ElementType> = {
@@ -48,22 +48,80 @@ const FLOATING_TECH = [
   { name: "TypeScript", icon: SiTypescript, color: "text-blue-400" },
   { name: "React 19", icon: SiReact, color: "text-cyan-400" },
   { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-sky-400" },
-  { name: "Python", icon: SiPython, color: "text-amber-400" },
+  { name: "Tauri", icon: SiTauri, color: "text-amber-400" },
 ];
 
 type ActiveTab = "profile" | "stack" | "console";
 
 export function Hero() {
-  const [roleIndex, setRoleIndex] = useState(0);
   const [activeTab, setActiveTab] = useState<ActiveTab>("profile");
   const [copied, setCopied] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+  const scrambleRef = useRef<HTMLSpanElement>(null);
+  const ctaBtnRef = useRef<HTMLAnchorElement>(null);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setRoleIndex((prev) => (prev + 1) % ROLES.length);
-    }, 3200);
-    return () => clearInterval(timer);
-  }, []);
+  useGSAP(() => {
+    // 1. Text Scramble Animation Engine
+    const chars = "!<>-_\\/[]{}—=+*^?#________0123456789";
+    let roleIdx = 0;
+    let isCancelled = false;
+
+    const scrambleTo = (targetText: string) => {
+      const el = scrambleRef.current;
+      if (!el || isCancelled) return;
+
+      const proxy = { progress: 0 };
+
+      gsap.to(proxy, {
+        progress: 1,
+        duration: 1.1,
+        ease: "power2.inOut",
+        onUpdate: () => {
+          if (!el) return;
+          const resolvedCount = Math.floor(proxy.progress * targetText.length);
+          let output = targetText.slice(0, resolvedCount);
+          for (let i = resolvedCount; i < targetText.length; i++) {
+            output += chars[Math.floor(Math.random() * chars.length)];
+          }
+          el.innerText = output;
+        },
+        onComplete: () => {
+          if (!el) return;
+          el.innerText = targetText;
+          gsap.delayedCall(3.2, () => {
+            if (isCancelled) return;
+            roleIdx = (roleIdx + 1) % ROLES.length;
+            scrambleTo(ROLES[roleIdx]);
+          });
+        },
+      });
+    };
+
+    scrambleTo(ROLES[0]);
+
+    // 2. EaseReverse Physics on CTA button
+    const cta = ctaBtnRef.current;
+    if (cta) {
+      const ctaTl = gsap.timeline({ paused: true })
+        .to(cta, {
+          y: -3,
+          scale: 1.02,
+          boxShadow: "0 12px 28px -5px rgba(79, 70, 229, 0.45)",
+          duration: 0.35,
+          ease: "power2.out",
+        });
+
+      const onEnter = () => ctaTl.timeScale(1).play();
+      const onLeave = () => ctaTl.timeScale(1.4).reverse();
+
+      cta.addEventListener("mouseenter", onEnter);
+      cta.addEventListener("mouseleave", onLeave);
+    }
+
+    return () => {
+      isCancelled = true;
+    };
+  }, { scope: heroRef });
 
   const copyCode = () => {
     const textToCopy = `// Shohibun Najam Ilma - Software Developer
@@ -71,7 +129,7 @@ const developer = {
   name: "Shohibun Najam Ilma",
   role: "Software Developer",
   education: "S1 Informatika, Universitas Jember (Cum Laude 3.74)",
-  experience: "PT. Senyum Media Utama & Central AI",
+  assignment: "Senyum Media Group",
   platforms: ["Web", "Mobile (Flutter)", "Desktop"],
   contact: "${personalInfo.email}"
 };`;
@@ -82,6 +140,7 @@ const developer = {
 
   return (
     <section
+      ref={heroRef}
       id="home"
       className="relative min-h-[92vh] flex items-center justify-center pt-24 pb-16 sm:pt-28 sm:pb-20 overflow-hidden"
     >
@@ -118,23 +177,17 @@ const developer = {
               {personalInfo.name}
             </h1>
 
-            {/* Dynamic Animated Role Rotator with glowing prompt */}
+            {/* Dynamic Animated Role Rotator with GSAP Text Scramble */}
             <div className="flex items-center gap-2.5 h-10 sm:h-12 mb-4 overflow-hidden">
               <span className="text-accent font-mono text-base sm:text-lg font-bold">
                 &gt;
               </span>
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={roleIndex}
-                  initial={{ y: 26, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -26, opacity: 0 }}
-                  transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="text-xl sm:text-2xl lg:text-3xl font-bold bg-linear-to-r from-accent via-indigo-500 to-cyan-500 bg-clip-text text-transparent"
-                >
-                  {ROLES[roleIndex]}
-                </motion.span>
-              </AnimatePresence>
+              <span
+                ref={scrambleRef}
+                className="font-mono text-xl sm:text-2xl lg:text-3xl font-bold bg-linear-to-r from-accent via-indigo-500 to-cyan-500 bg-clip-text text-transparent tracking-tight inline-block min-w-70 sm:min-w-85"
+              >
+                Software Developer
+              </span>
               <span className="w-2 h-6 bg-accent animate-pulse ml-0.5 rounded-xs" />
             </div>
 
@@ -170,7 +223,7 @@ const developer = {
                 </div>
                 <div className="flex flex-col min-w-0">
                   <span className="text-xs font-bold text-text-primary leading-tight">
-                    2+ Years
+                    3+ Years
                   </span>
                   <span className="text-[10px] text-text-muted truncate">
                     Production Exp
@@ -184,10 +237,10 @@ const developer = {
                 </div>
                 <div className="flex flex-col min-w-0">
                   <span className="text-xs font-bold text-text-primary leading-tight">
-                    Full-Stack
+                    Front-End
                   </span>
                   <span className="text-[10px] text-text-muted truncate">
-                    Web & Flutter
+                    Web | Mobile | Desktop
                   </span>
                 </div>
               </div>
@@ -196,11 +249,13 @@ const developer = {
             {/* CTA Action Buttons */}
             <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-8 w-full sm:w-auto">
               <a
-                href="#projects"
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-accent hover:bg-accent-hover text-white font-medium text-sm transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                ref={ctaBtnRef}
+                href="/Portfolio%20-%20Shohibun.pdf"
+                download="Portfolio - Shohibun.pdf"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-accent text-white font-medium text-sm transition-colors shadow-sm"
               >
-                <span>View My Projects</span>
-                <FiArrowRight className="w-4 h-4" />
+                <FiDownload className="w-4 h-4" />
+                <span>Download Portfolio</span>
               </a>
 
               <a
@@ -325,7 +380,7 @@ const developer = {
                 </div>
 
                 {/* Animated Tab Body */}
-                <div className="p-5 font-mono text-xs leading-relaxed overflow-x-auto min-h-[290px] flex flex-col justify-between">
+                <div className="p-5 font-mono text-xs leading-relaxed overflow-x-auto min-h-72.5 flex flex-col justify-between">
                   <AnimatePresence mode="wait">
                     {activeTab === "profile" && (
                       <motion.div
@@ -370,9 +425,9 @@ const developer = {
                           ,
                         </p>
                         <p className="pl-4">
-                          <span className="text-text-primary">experience:</span>{" "}
+                          <span className="text-text-primary">assignment:</span>{" "}
                           <span className="text-cyan-500">
-                            &quot;PT. Senyum Media Utama & Central AI&quot;
+                            &quot;Senyum Media Group&quot;
                           </span>
                           ,
                         </p>
@@ -524,10 +579,6 @@ const developer = {
                   <div className="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-medium">
                     <FiCheckCircle className="w-3.5 h-3.5" />
                     <span>Next.js 16 • React 19 Engine</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block shadow-[0_0_8px_#10b981]" />
-                    <span>Live v2.4</span>
                   </div>
                 </div>
               </div>

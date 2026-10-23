@@ -162,7 +162,7 @@ export function AnimatedBackground() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute -top-40 -left-40 w-[600px] sm:w-[850px] h-[600px] sm:h-[850px] rounded-full bg-indigo-500/25 dark:bg-indigo-600/35 blur-[120px] sm:blur-[160px]"
+        className="absolute -top-40 -left-40 w-150 sm:w-212.5 h-150 sm:h-212.5 rounded-full bg-indigo-500/25 dark:bg-indigo-600/35 blur-[120px] sm:blur-[160px]"
       />
 
       {/* Aurora Ambient Orb 2: Vivid Cyan & Turquoise (Top-Right) */}
@@ -178,7 +178,7 @@ export function AnimatedBackground() {
           ease: "easeInOut",
           delay: 2,
         }}
-        className="absolute top-1/6 -right-40 w-[550px] sm:w-[750px] h-[550px] sm:h-[750px] rounded-full bg-cyan-400/25 dark:bg-cyan-500/30 blur-[110px] sm:blur-[150px]"
+        className="absolute top-1/6 -right-40 w-137.5 sm:w-187.5 h-137.5 sm:h-187.5 rounded-full bg-cyan-400/25 dark:bg-cyan-500/30 blur-[110px] sm:blur-[150px]"
       />
 
       {/* Aurora Ambient Orb 3: Purple / Violet / Magenta (Middle-Left) */}
@@ -194,7 +194,7 @@ export function AnimatedBackground() {
           ease: "easeInOut",
           delay: 4,
         }}
-        className="absolute top-1/2 -left-48 w-[500px] sm:w-[700px] h-[500px] sm:h-[700px] rounded-full bg-purple-500/20 dark:bg-purple-600/30 blur-[120px] sm:blur-[160px]"
+        className="absolute top-1/2 -left-48 w-125 sm:w-175 h-125 sm:h-175 rounded-full bg-purple-500/20 dark:bg-purple-600/30 blur-[120px] sm:blur-[160px]"
       />
 
       {/* Aurora Ambient Orb 4: Rose / Pink Sunrise Warmth (Bottom-Right) */}
@@ -210,7 +210,7 @@ export function AnimatedBackground() {
           ease: "easeInOut",
           delay: 6,
         }}
-        className="absolute bottom-10 -right-28 w-[500px] sm:w-[700px] h-[500px] sm:h-[700px] rounded-full bg-rose-500/18 dark:bg-rose-600/25 blur-[120px] sm:blur-[150px]"
+        className="absolute bottom-10 -right-28 w-125 sm:w-175 h-125 sm:h-175 rounded-full bg-rose-500/18 dark:bg-rose-600/25 blur-[120px] sm:blur-[150px]"
       />
 
       {/* Aurora Ambient Orb 5: Emerald & Mint Fresh Accent (Center-Bottom) */}
@@ -226,7 +226,7 @@ export function AnimatedBackground() {
           ease: "easeInOut",
           delay: 8,
         }}
-        className="absolute bottom-1/3 left-1/4 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] rounded-full bg-emerald-500/15 dark:bg-emerald-600/20 blur-[130px] sm:blur-[170px]"
+        className="absolute bottom-1/3 left-1/4 w-100 sm:w-150 h-100 sm:h-150 rounded-full bg-emerald-500/15 dark:bg-emerald-600/20 blur-[130px] sm:blur-[170px]"
       />
 
       {/* Interactive Floating Particle Canvas */}

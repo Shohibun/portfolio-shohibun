@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { navItems, personalInfo } from "@/lib/data";
 import { useActiveSection } from "@/hooks/useActiveSection";
@@ -28,7 +27,7 @@ export function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-200 ${
           scrolled
-            ? "bg-(--surface)/90 backdrop-blur-md border-b border-border shadow-xs py-3"
+            ? "bg-surface/90 backdrop-blur-md border-b border-border shadow-xs py-3"
             : "bg-transparent py-4 sm:py-5"
         }`}
       >
@@ -59,7 +58,7 @@ export function Navbar() {
           </a>
 
           {/* Desktop Nav Items */}
-          <nav className="hidden md:flex items-center gap-1 bg-(--surface-elevated)/70 backdrop-blur-md px-3 py-1.5 rounded-full border border-border shadow-xs">
+          <nav className="hidden md:flex items-center gap-1 bg-surface-elevated/70 backdrop-blur-md px-3 py-1.5 rounded-full border border-border shadow-xs">
             {navItems.map((item) => {
               const sectionId = item.href.replace("#", "");
               const isActive = activeSection === sectionId;
@@ -111,15 +110,12 @@ export function Navbar() {
         </div>
       </header>
 
-      {/* Mobile Drawer */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <MobileNav
-            activeSection={activeSection}
-            onClose={() => setMobileOpen(false)}
-          />
-        )}
-      </AnimatePresence>
+      {/* Mobile Drawer (GSAP Interruptible Single Timeline) */}
+      <MobileNav
+        isOpen={mobileOpen}
+        activeSection={activeSection}
+        onClose={() => setMobileOpen(false)}
+      />
     </>
   );
 }

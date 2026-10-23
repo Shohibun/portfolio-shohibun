@@ -8,9 +8,6 @@ import {
   FiMapPin,
   FiBriefcase,
   FiAward,
-  FiDownload,
-  FiArrowRight,
-  FiCode,
 } from "react-icons/fi";
 
 export function About() {
@@ -42,7 +39,7 @@ export function About() {
                   className="object-cover object-center"
                   sizes="(max-width: 768px) 100vw, 400px"
                 />
-                <div className="absolute bottom-3 left-3 px-3 py-1 rounded-md bg-(--surface)/90 backdrop-blur-md border border-border text-xs font-medium text-text-primary shadow-2xs">
+                <div className="absolute bottom-3 left-3 px-3 py-1 rounded-md bg-surface/90 backdrop-blur-md border border-border text-xs font-medium text-text-primary shadow-2xs">
                   Software Developer
                 </div>
               </div>
@@ -64,7 +61,7 @@ export function About() {
                   <div>
                     <span className="text-text-muted block">Current Employment:</span>
                     <span className="font-semibold text-text-primary">
-                      Full Stack Developer at PT. Senyum Media Utama
+                      Full Stack Developer at Senyum Media Group
                     </span>
                   </div>
                 </div>
@@ -101,7 +98,7 @@ export function About() {
                 modular, mudah dirawat, dan cepat diakses oleh pengguna.
               </p>
               <p className="text-text-secondary leading-relaxed text-sm sm:text-base">
-                Di <strong>PT. Senyum Media Utama</strong>, saya berkontribusi dalam perancangan
+                Di <strong>Senyum Media Group</strong>, saya berkontribusi dalam perancangan
                 web platform e-commerce dan aplikasi mobile cross-platform. Sebelumnya di{" "}
                 <strong>PT. Central AI</strong>, saya berkontribusi pada pengembangan web
                 perusahaan dan integrasi antarmuka dengan layanan kecerdasan buatan.
@@ -130,27 +127,6 @@ export function About() {
                   Certifications & Honors
                 </span>
               </div>
-            </div>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap items-center gap-3 pt-4">
-              <a
-                href={personalInfo.cvUrl}
-                download
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-accent text-white hover:bg-accent-hover font-medium text-sm transition-colors shadow-xs"
-              >
-                <FiDownload className="w-4 h-4" />
-                <span>Download Resume (PDF)</span>
-              </a>
-
-              <a
-                href="#skills"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border bg-surface hover:bg-background-secondary text-text-primary font-medium text-sm transition-colors"
-              >
-                <FiCode className="w-4 h-4 text-accent" />
-                <span>Explore Technical Skills</span>
-                <FiArrowRight className="w-3.5 h-3.5" />
-              </a>
             </div>
           </motion.div>
         </div>
